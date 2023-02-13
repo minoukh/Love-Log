@@ -1,8 +1,8 @@
-# Dating-Solution App
+# Love-Log App
 
 ## The app that makes your dating experience whole!
 
-About Dating-Solution:
+About Love-Log:
 - ***What** will the application do?*
   - In the age of online dating and social media, finding your love-match among the many options you have, can get overwhelming. This app allows you to keep track of the dozen dates you have been on, make logs, rate them, create personalized notes and reminders, as well as journals.
 - ***Who** will use it?*
