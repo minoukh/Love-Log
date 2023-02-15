@@ -97,6 +97,7 @@ public class MyJournal {
         Boolean successStatus = input.nextBoolean();
         newDate.setSuccessfulness(successStatus);
 
+        System.out.println("\nDate " + newDate.getDateNumber() + " with " + newDate.getDateName() + " is now added!");
     }
 
     private void doAddToCons() {

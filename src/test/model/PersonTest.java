@@ -63,19 +63,24 @@ public class PersonTest {
 
     @Test
     void testAddingToPros() {
-        testPerson.addToCons("dorky");
+        testPerson.addToPros("dorky");
         assertEquals(1, testPerson.getListOfPros().size());
 
-        testPerson.addToCons("quirky");
+
+        testPerson.addToPros("quirky");
         assertEquals(2, testPerson.getListOfPros().size());
     }
 
 
     @Test
     void testAddDateToListOfDates(DateEntry date) {
-        DateEntry testDate = new DateEntry("Joe", 1);
-        testPerson.addDateToListOfDates(testDate);
+        DateEntry testDate1 = new DateEntry("Joe", 1);
+        testPerson.addDateToListOfDates(testDate1);
         assertEquals(1, testPerson.numOfDatesWithPerson());
+
+        DateEntry testDate2 = new DateEntry("John", 1);
+        testPerson.addDateToListOfDates(testDate2);
+        assertEquals(2, testPerson.numOfDatesWithPerson());
     }
 
     @Test
