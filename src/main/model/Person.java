@@ -152,3 +152,4 @@ public class Person {
         personEarnedPoints = newPoint;
     }
 }
+

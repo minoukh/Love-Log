@@ -104,3 +104,4 @@ public class DateEntry {
         this.successStatus = successfulness;
     }
 }
+
