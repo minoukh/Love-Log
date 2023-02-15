@@ -71,12 +71,9 @@ public class Person {
      *          of dates user has been on with them
      */
     public void addDateToListOfDates(DateEntry date) {
-        if (date.getDateName().equals(this.getName())) {
-            datesWeHaveBeenOn.add(date);
-        } else {
-            datesWeHaveBeenOn = datesWeHaveBeenOn;
-        }
+        datesWeHaveBeenOn.add(date);
     }
+
 
     /*
      * MODIFIES: this

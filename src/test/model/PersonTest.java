@@ -84,13 +84,6 @@ public class PersonTest {
     }
 
     @Test
-    void testFailureToAddDateToListOfDates(DateEntry date) {
-        DateEntry testDate = new DateEntry("Jack", 1);
-        testPerson.addDateToListOfDates(testDate);
-        assertEquals(0, testPerson.numOfDatesWithPerson());
-    }
-
-    @Test
     void testSuccessfulRemovalOfTheDate() {
         DateEntry testDate1 = new DateEntry("Joe", 1);
         DateEntry testDate2 = new DateEntry("Joe", 2);
