@@ -73,6 +73,8 @@ public class Person {
     public void addDateToListOfDates(DateEntry date) {
         if (date.getDateName().equals(this.getName())) {
             datesWeHaveBeenOn.add(date);
+        } else {
+            datesWeHaveBeenOn = datesWeHaveBeenOn;
         }
     }
 

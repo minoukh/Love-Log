@@ -78,7 +78,7 @@ public class PersonTest {
         testPerson.addDateToListOfDates(testDate1);
         assertEquals(1, testPerson.numOfDatesWithPerson());
 
-        DateEntry testDate2 = new DateEntry("John", 1);
+        DateEntry testDate2 = new DateEntry("Joe", 2);
         testPerson.addDateToListOfDates(testDate2);
         assertEquals(2, testPerson.numOfDatesWithPerson());
     }
