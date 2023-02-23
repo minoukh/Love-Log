@@ -28,14 +28,15 @@ public class MyJournal {
         init();
 
         while (keepGoing) {
-            if (!inPeronCreation) {
-                mainDisplayMenu();
-                command = input.next();
-                command = command.toLowerCase();
+            if (inPeronCreation) {
+                personDisplayMenu();
+            } else if (inListOfPeople) {
+                listOfPersonDisplayMenu();
             } else {
-                command = input.next();
-                command = command.toLowerCase();
+                mainDisplayMenu();
             }
+            command = input.next();
+            command = command.toLowerCase();
 
             if (command.equals("q")) {
                 keepGoing = false;
@@ -48,7 +49,7 @@ public class MyJournal {
     }
 
     private void init() {
-        listOfDates = new ArrayList<>();
+        //listOfDates = new ArrayList<>();
         listOfPerson = new ArrayList<>();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
@@ -60,25 +61,57 @@ public class MyJournal {
         if (command.equals("np")) {
             doCreatePerson();
             inPeronCreation = true;
-            inListOfPeople = true;
+            inListOfPeople = false;
         } else if (command.equals("lop")) {
             doPrintListOfPeople();
             inListOfPeople = true;
-        } else if (command.equals("ap")) {
+            inPeronCreation = false;
+        } else if (command.equals("+pro")) {
             doAddToPros();
-            personDisplayMenu();
-        } else if (command.equals("an")) {
+        } else if (command.equals("+con")) {
             doAddToCons();
-            personDisplayMenu();
-        } else if (command.equals("ad")) {
+        } else if (command.equals("+date")) {
             doAddToDates();
-            personDisplayMenu();
+        } else if (command.equals("vu")) {
+            doPrintProfile();
+        } else if (command.equals("mod")) {
+            doModifyPerson();
+        } else if (command.equals("rem")) {
+            doRemovePerson();
         } else if (command.equals("b")) {
-            mainDisplayMenu();
+            inListOfPeople = false;
             inPeronCreation = false;
         } else {
             System.out.println("Selection not valid...");
         }
+    }
+
+    private void doRemovePerson() {
+        System.out.println("\nWhich candidate would you like to remove? (number)");
+        int personNum = input.nextInt();
+        listOfPerson.remove(personNum--);
+    }
+
+    private void doModifyPerson() {
+        System.out.println("\nWhich candidate would you like to modify? (number)");
+        int personNum = input.nextInt();
+        System.out.println("\nHere is " + listOfPerson.get(personNum - 1).getName() + "'s profile:");
+        doPrintProfile();
+        inPeronCreation = true;
+    }
+
+    private void doPrintProfile() {
+        System.out.println("\nWhich candidate's  profile would you like to view? (number)");
+        int personNum = input.nextInt();
+        Person thisPerson = listOfPerson.get(personNum - 1);
+        double successRate = (thisPerson.numOfSuccessfulDatesWithPerson() / thisPerson.numOfDatesWithPerson()) * 100;
+        System.out.println("Here is a summary of " + thisPerson.getName() + ":");
+        System.out.println("Age: " + thisPerson.getAge());
+        System.out.println("Occupation: " + thisPerson.getPersonJob());
+        System.out.println("Lives in: " + thisPerson.getPersonLocation());
+        System.out.println("Points so far: " + thisPerson.getPersonEarnedPoints());
+        System.out.println("Number of dates you have been on: " + thisPerson.numOfDatesWithPerson());
+        System.out.println("Success rate for dates: " + successRate + "%");
     }
 
     private void doAddToDates() {
@@ -129,7 +162,6 @@ public class MyJournal {
         newPerson = new Person(name, age, location, job);
         listOfPerson.add(newPerson);
         System.out.println("\n" + name + " is now added to your list!");
-        personDisplayMenu();
     }
 
     // EFFECTS: displays menu of options to user
@@ -142,19 +174,19 @@ public class MyJournal {
 
     private void personDisplayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tap -> Add to the list of this person's positive characteristics.");
-        System.out.println("\tan -> Add to the list of this person's negative characteristics.");
-        System.out.println("\tad -> Add a date or interaction you have had with this person!🍷🥩");
+        System.out.println("\t+pro -> Add to the list of this person's positive characteristics.");
+        System.out.println("\t+con -> Add to the list of this person's negative characteristics.");
+        System.out.println("\t+date -> Add a date or interaction you have had with this person!🍷🥩");
         System.out.println("\tb -> Go to the main menu");
         System.out.println("\tq -> quit journaling");
     }
 
     private void listOfPersonDisplayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tv -> View a candidate description and dates you have had with them.");
+        System.out.println("\tvu -> View a candidate description and dates you have had with them.");
         System.out.println("\tmod -> Modify a candidate. 🔧");
         System.out.println("\trem -> Remove a person you are no longer seeing...💔");
-        System.out.println("\tan -> Add a new person 😈");
+        System.out.println("\tnp -> Add a new person 😈");
         System.out.println("\tb -> Go to the main menu");
         System.out.println("\tq -> quit journaling");
     }
