@@ -20,6 +20,8 @@ About Love-Log:
 * As a user, I want to be able to add Reminders for Special Occasion (e.g. Birthdays, date plans, milestones, etc.).
 * As a user, I want to be able to rate a date.
 * As a user, I want to be able to view potential partners rankings. 
+* As a user, I want to be able to save my journal to file (if I so choose)
+* As a user, I want to be able to be able to load my journal from file (if I so choose)
 
 
 
