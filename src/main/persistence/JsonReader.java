@@ -1,0 +1,77 @@
+package persistence;
+
+import model.DateEntry;
+import model.Person;
+import model.MyJournal;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.json.*;
+
+// Represents a reader that reads journal from JSON data stored in file
+public class JsonReader {
+    private String source;
+
+    // EFFECTS: constructs reader to read from source file
+    public JsonReader(String source) {
+        this.source = source;
+    }
+
+    // EFFECTS: reads journal from file and returns it;
+    // throws IOException if an error occurs reading data from file
+    public MyJournal read() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return parseMyJournal(jsonObject);
+    }
+
+    // EFFECTS: reads source file as string and returns it
+    private String readFile(String source) throws IOException {
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s));
+        }
+
+        return contentBuilder.toString();
+    }
+
+    // EFFECTS: parses journal from JSON object and returns it
+    private MyJournal parseMyJournal(JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        MyJournal mj = new MyJournal(name);
+        addPersons(mj, jsonObject);
+        return mj;
+    }
+
+    // MODIFIES: mj
+    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    private void addPersons(MyJournal mj, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("persons");
+        for (Object json : jsonArray) {
+            JSONObject nextThingy = (JSONObject) json;
+            addPerson(mj, nextThingy);
+        }
+    }
+
+    // MODIFIES: wr
+    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    private void addPerson(MyJournal mj, JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        int age = jsonObject.getInt("age");
+        String personLocation = jsonObject.getString("location");
+        String personJob = jsonObject.getString("job");
+        int personEarnedPoints = jsonObject.getInt("points");
+        List<String> cons = (List) jsonObject.getJSONArray("cons");
+        List<String> pros = (List) jsonObject.getJSONArray("pros");
+        List<DateEntry> datesWeHaveBeenOn = (List) jsonObject.getJSONArray("dates");
+        Person person = new Person(name, age,personLocation,personJob);
+        mj.addPerson(person);
+    }
+
+}

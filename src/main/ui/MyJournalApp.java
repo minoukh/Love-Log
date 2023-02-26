@@ -1,26 +1,43 @@
 package ui;
 
 import model.DateEntry;
+import model.MyJournal;
 import model.Person;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class MyJournal {
+// Represents the journal application
+public class MyJournalApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private ArrayList<Person> listOfPerson;
-    private ArrayList<DateEntry> listOfDates;
     private Person newPerson;
     private DateEntry newDate;
     private Scanner input;
+    private MyJournal myJournal;
     private Boolean inPeronCreation = false;
 
     private Boolean inListOfPeople = false;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    public MyJournal() {
+    // EFFECTS: constructs journal and runs application
+    public MyJournalApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        myJournal = new MyJournal("Jenna's journal");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runJournal();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runJournal() {
         boolean keepGoing = true;
         String command = null;
@@ -49,7 +66,6 @@ public class MyJournal {
     }
 
     private void init() {
-        //listOfDates = new ArrayList<>();
         listOfPerson = new ArrayList<>();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
@@ -81,8 +97,34 @@ public class MyJournal {
         } else if (command.equals("b")) {
             inListOfPeople = false;
             inPeronCreation = false;
+        } else if (command.equals("s")) {
+            saveWorkRoom();
+        } else if (command.equals("l")) {
+            loadWorkRoom();
         } else {
             System.out.println("Selection not valid...");
+        }
+    }
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            myJournal = jsonReader.read();
+            System.out.println("Loaded " + myJournal.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: saves the journal to file
+    private void saveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myJournal);
+            jsonWriter.close();
+            System.out.println("Saved " + myJournal.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
@@ -169,6 +211,8 @@ public class MyJournal {
         System.out.println("\nSelect from:");
         System.out.println("\tnp -> create a new person");
         System.out.println("\tlop -> see the list of people you are dating");
+        System.out.println("\ts -> save work room to file");
+        System.out.println("\tl -> load work room from file");
         System.out.println("\tq -> quit journaling");
     }
 

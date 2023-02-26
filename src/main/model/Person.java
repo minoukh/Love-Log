@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Represents a person having a name, age, list of good (pros) and bad (cons) characteristics, and points
-public class Person {
+public class Person implements Writable {
     private final String name;
     private final int age;
     private String personLocation;
@@ -151,6 +154,20 @@ public class Person {
     // setters:
     public void setPersonPoints(int newPoint) {
         personEarnedPoints = newPoint;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("age", age);
+        json.put("location", personLocation);
+        json.put("job", personJob);
+        json.put("points", personEarnedPoints);
+        json.put("cons", cons);
+        json.put("pros", pros);
+        json.put("dates", datesWeHaveBeenOn);
+        return json;
     }
 }
 
