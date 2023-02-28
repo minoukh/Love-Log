@@ -1,0 +1,25 @@
+{
+  "persons": [
+    {
+      "pros": [],
+      "name": "jj",
+      "location": "jj",
+      "dates": [],
+      "job": "jj",
+      "age": 20,
+      "points": 0,
+      "cons": []
+    },
+    {
+      "pros": [],
+      "name": "kk",
+      "location": "kk",
+      "dates": [],
+      "job": "kk",
+      "age": 20,
+      "points": 0,
+      "cons": []
+    }
+  ],
+  "name": "My journal"
+}

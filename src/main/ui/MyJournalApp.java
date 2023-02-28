@@ -204,7 +204,7 @@ public class MyJournalApp {
         System.out.println("\nWhat do they do for a living?");
         String job = input.next();
 
-        newPerson = new Person(name, age, location, job);
+        newPerson = new Person(name, age, location, job, 0);
         listOfPerson.add(newPerson);
         myJournal.addPerson(newPerson);
         System.out.println("\n" + name + " is now added to your list!");

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -66,11 +65,11 @@ public class JsonReader {
         int age = jsonObject.getInt("age");
         String personLocation = jsonObject.getString("location");
         String personJob = jsonObject.getString("job");
-        //int personEarnedPoints = jsonObject.getInt("points");
+        int personEarnedPoints = jsonObject.getInt("points");
         //List<String> cons = (List) jsonObject.getJSONArray("cons");
         //List<String> pros = (List) jsonObject.getJSONArray("pros");
         //List<DateEntry> datesWeHaveBeenOn = (List) jsonObject.getJSONArray("dates");
-        Person person = new Person(name, age, personLocation, personJob);
+        Person person = new Person(name, age, personLocation, personJob, personEarnedPoints);
         myJournal.addPerson(person);
     }
 

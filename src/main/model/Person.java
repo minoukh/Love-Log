@@ -23,8 +23,8 @@ public class Person implements Writable {
      *          ArrayLists, dates went on with this person so far set to
      *          empty LinkedList
      */
-    public Person(String name, int age, String location, String job) {
-        this.personEarnedPoints = 0;
+    public Person(String name, int age, String location, String job, int personEarnedPoints) {
+        this.personEarnedPoints = personEarnedPoints;
         this.name = name;
         this.age = age;
         this.personLocation = location;

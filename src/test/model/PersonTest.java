@@ -17,8 +17,7 @@ public class PersonTest {
 
     @BeforeEach
     void runBefore() {
-        testPerson = new Person("Joe", 20, "Vancouver",
-                "Student");
+        testPerson = new Person("Joe", 20, "Vancouver", "Student", 0);
     }
 
     @Test
