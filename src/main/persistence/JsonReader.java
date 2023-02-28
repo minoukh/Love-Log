@@ -44,34 +44,34 @@ public class JsonReader {
     // EFFECTS: parses journal from JSON object and returns it
     private MyJournal parseMyJournal(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        MyJournal mj = new MyJournal(name);
-        addPersons(mj, jsonObject);
-        return mj;
+        MyJournal myJournal = new MyJournal(name);
+        addPersons(myJournal, jsonObject);
+        return myJournal;
     }
 
-    // MODIFIES: mj
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
-    private void addPersons(MyJournal mj, JSONObject jsonObject) {
+    // MODIFIES: myJournal
+    // EFFECTS: parses persons from JSON object and adds them to journal
+    private void addPersons(MyJournal myJournal, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("persons");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addPerson(mj, nextThingy);
+            JSONObject nextPerson = (JSONObject) json;
+            addPerson(myJournal, nextPerson);
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addPerson(MyJournal mj, JSONObject jsonObject) {
+    // MODIFIES: myJournal
+    // EFFECTS: parses person from JSON object and adds it to journal
+    private void addPerson(MyJournal myJournal, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int age = jsonObject.getInt("age");
         String personLocation = jsonObject.getString("location");
         String personJob = jsonObject.getString("job");
-        int personEarnedPoints = jsonObject.getInt("points");
-        List<String> cons = (List) jsonObject.getJSONArray("cons");
-        List<String> pros = (List) jsonObject.getJSONArray("pros");
-        List<DateEntry> datesWeHaveBeenOn = (List) jsonObject.getJSONArray("dates");
-        Person person = new Person(name, age,personLocation,personJob);
-        mj.addPerson(person);
+        //int personEarnedPoints = jsonObject.getInt("points");
+        //List<String> cons = (List) jsonObject.getJSONArray("cons");
+        //List<String> pros = (List) jsonObject.getJSONArray("pros");
+        //List<DateEntry> datesWeHaveBeenOn = (List) jsonObject.getJSONArray("dates");
+        Person person = new Person(name, age, personLocation, personJob);
+        myJournal.addPerson(person);
     }
 
 }

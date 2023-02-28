@@ -10,13 +10,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 // Represents the journal application
 public class MyJournalApp {
-    private static final String JSON_STORE = "./data/workroom.json";
-    private ArrayList<Person> listOfPerson;
+    private static final String JSON_STORE = "./data/myJournal.json";
+    private List<Person> listOfPerson;
     private Person newPerson;
     private DateEntry newDate;
     private Scanner input;
@@ -98,18 +99,20 @@ public class MyJournalApp {
             inListOfPeople = false;
             inPeronCreation = false;
         } else if (command.equals("s")) {
-            saveWorkRoom();
+            saveMyJournal();
         } else if (command.equals("l")) {
-            loadWorkRoom();
+            loadMyJournal();
         } else {
             System.out.println("Selection not valid...");
         }
     }
+
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
-    private void loadWorkRoom() {
+    // EFFECTS: loads journal from file
+    private void loadMyJournal() {
         try {
             myJournal = jsonReader.read();
+            listOfPerson = jsonReader.read().getListOfPerson();
             System.out.println("Loaded " + myJournal.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
@@ -117,7 +120,7 @@ public class MyJournalApp {
     }
 
     // EFFECTS: saves the journal to file
-    private void saveWorkRoom() {
+    private void saveMyJournal() {
         try {
             jsonWriter.open();
             jsonWriter.write(myJournal);
@@ -203,6 +206,7 @@ public class MyJournalApp {
 
         newPerson = new Person(name, age, location, job);
         listOfPerson.add(newPerson);
+        myJournal.addPerson(newPerson);
         System.out.println("\n" + name + " is now added to your list!");
     }
 
@@ -211,8 +215,8 @@ public class MyJournalApp {
         System.out.println("\nSelect from:");
         System.out.println("\tnp -> create a new person");
         System.out.println("\tlop -> see the list of people you are dating");
-        System.out.println("\ts -> save work room to file");
-        System.out.println("\tl -> load work room from file");
+        System.out.println("\ts -> save journal to file");
+        System.out.println("\tl -> load journal from file");
         System.out.println("\tq -> quit journaling");
     }
 
