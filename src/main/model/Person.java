@@ -12,9 +12,9 @@ public class Person implements Writable {
     private String personLocation;
     private String personJob;
     private int personEarnedPoints;
-    private List<String> cons;
-    private List<String> pros;
-    private List<DateEntry> datesWeHaveBeenOn;
+    public List<String> cons;
+    public List<String> pros;
+    public List<DateEntry> datesWeHaveBeenOn;
 
     /*
      * REQUIRES: name has a non-zero length; age is a positive integer.

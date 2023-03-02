@@ -66,6 +66,8 @@ public class MyJournalApp {
         System.out.println("\nGoodbye!");
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes the Journal
     private void init() {
         listOfPerson = new ArrayList<>();
         input = new Scanner(System.in);
@@ -149,14 +151,14 @@ public class MyJournalApp {
         System.out.println("\nWhich candidate's  profile would you like to view? (number)");
         int personNum = input.nextInt();
         Person thisPerson = listOfPerson.get(personNum - 1);
-        double successRate = (thisPerson.numOfSuccessfulDatesWithPerson() / thisPerson.numOfDatesWithPerson()) * 100;
+//        double successRate = (thisPerson.numOfSuccessfulDatesWithPerson() / thisPerson.numOfDatesWithPerson()) * 100;
         System.out.println("Here is a summary of " + thisPerson.getName() + ":");
         System.out.println("Age: " + thisPerson.getAge());
         System.out.println("Occupation: " + thisPerson.getPersonJob());
         System.out.println("Lives in: " + thisPerson.getPersonLocation());
         System.out.println("Points so far: " + thisPerson.getPersonEarnedPoints());
         System.out.println("Number of dates you have been on: " + thisPerson.numOfDatesWithPerson());
-        System.out.println("Success rate for dates: " + successRate + "%");
+//        System.out.println("Success rate for dates: " + successRate + "%");
     }
 
     private void doAddToDates() {
@@ -240,7 +242,7 @@ public class MyJournalApp {
     }
 
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: prints out the list of persons user is
     private void doPrintListOfPeople() {
         int i = 1;
         for (Person p : listOfPerson) {
@@ -249,7 +251,5 @@ public class MyJournalApp {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: initializes the Journal
 
 }
