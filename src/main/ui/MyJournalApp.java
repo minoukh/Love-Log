@@ -83,7 +83,6 @@ public class MyJournalApp {
             inListOfPeople = false;
         } else if (command.equals("lop")) {
             doPrintListOfPeople();
-            inListOfPeople = true;
             inPeronCreation = false;
         } else if (command.equals("+pro")) {
             doAddToPros();
@@ -97,6 +96,7 @@ public class MyJournalApp {
             doModifyPerson();
         } else if (command.equals("rem")) {
             doRemovePerson();
+            inListOfPeople = false;
         } else if (command.equals("b")) {
             inListOfPeople = false;
             inPeronCreation = false;
@@ -135,8 +135,11 @@ public class MyJournalApp {
 
     private void doRemovePerson() {
         System.out.println("\nWhich candidate would you like to remove? (number)");
-        int personNum = input.nextInt();
-        listOfPerson.remove(personNum--);
+        int personNum = input.nextInt() - 1;
+        listOfPerson.remove(personNum);
+        //myJournal.remove(personNum);
+
+        System.out.println("Candidate " + (personNum + 1) + " was removed successfully.");
     }
 
     private void doModifyPerson() {
@@ -241,9 +244,15 @@ public class MyJournalApp {
     // EFFECTS: prints out the list of persons user is
     private void doPrintListOfPeople() {
         int i = 1;
-        for (Person p : listOfPerson) {
-            System.out.println("\nCandidate " + i + " : " + p.getName());
-            i++;
+        if (listOfPerson.isEmpty()) {
+            System.out.println("\nYour list is empty. Would you like to add a new person or load your journal?");
+            inListOfPeople = false;
+        } else {
+            for (Person p : listOfPerson) {
+                System.out.println("\nCandidate " + i + " : " + p.getName());
+                i++;
+            }
+            inListOfPeople = true;
         }
     }
 

@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 // Represents a journal having a collection of persons
@@ -56,5 +55,16 @@ public class MyJournal implements Writable {
         }
 
         return jsonArray;
+    }
+
+    public void remove(int personNum) {
+        int index = 0;
+        for (Person p : listOfPerson) {
+            if (index == personNum) {
+                listOfPerson.remove(p);
+            } else {
+                index++;
+            }
+        }
     }
 }
