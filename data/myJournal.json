@@ -1,13 +1,41 @@
 {
-   "persons": [{
-      "pros": [],
-      "name": "Jack",
-      "location": "Vancouver",
-      "dates": [],
-      "job": "student",
-      "age": 22,
-      "points": 0,
-      "cons": []
-   }],
-   "name": "Jenna's journal"
+    "persons": [
+        {
+            "pros": ["nice"],
+            "name": "kiana",
+            "location": "earth",
+            "dates": [],
+            "job": "student",
+            "age": 20,
+            "points": 0,
+            "cons": ["fun"]
+        },
+        {
+            "pros": [],
+            "name": "george",
+            "location": "student",
+            "dates": [{
+                "dateName": "george",
+                "dateSuccessful": true,
+                "dateRedFlagEvents": ["jksndfcjkdsnj"],
+                "dateNumber": 1,
+                "dateHighLightEvents": ["kjslfjsdfkj"]
+            }],
+            "job": "nothing",
+            "age": 23,
+            "points": 0,
+            "cons": []
+        },
+        {
+            "pros": [],
+            "name": "Rosh",
+            "location": "here",
+            "dates": [],
+            "job": "sth",
+            "age": 30,
+            "points": 0,
+            "cons": []
+        }
+    ],
+    "name": "Minou's journal"
 }

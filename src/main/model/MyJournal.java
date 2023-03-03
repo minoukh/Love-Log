@@ -29,9 +29,9 @@ public class MyJournal implements Writable {
         listOfPerson.add(person);
     }
 
-    // EFFECTS: returns an unmodifiable list of persons user is dating in this journal
+    // EFFECTS: returns a list of persons user is dating in this journal
     public List<Person> getListOfPerson() {
-        return Collections.unmodifiableList(listOfPerson);
+        return listOfPerson;
     }
 
     // EFFECTS: returns number of persons dating in this journal

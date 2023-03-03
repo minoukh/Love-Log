@@ -169,5 +169,18 @@ public class Person implements Writable {
         json.put("dates", datesWeHaveBeenOn);
         return json;
     }
+
+    public void printProfile() {
+        //double successRate = (this.numOfSuccessfulDatesWithPerson() / this.numOfDatesWithPerson()) * 100;
+        System.out.println("Here is a summary of " + this.getName() + ":");
+        System.out.println("Age: " + this.getAge());
+        System.out.println("Occupation: " + this.getPersonJob());
+        System.out.println("Lives in: " + this.getPersonLocation());
+        System.out.println("Some of their good qualities: " + this.getListOfPros());
+        System.out.println("Some of their bad qualities: " + this.getListOfCons());
+        System.out.println("Points so far: " + this.getPersonEarnedPoints());
+        System.out.println("Number of dates you have been on: " + this.numOfDatesWithPerson());
+        //System.out.println("Success rate for dates: " + successRate + "%");
+    }
 }
 

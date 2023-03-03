@@ -31,7 +31,7 @@ public class MyJournalApp {
     // EFFECTS: constructs journal and runs application
     public MyJournalApp() throws FileNotFoundException {
         input = new Scanner(System.in);
-        myJournal = new MyJournal("Jenna's journal");
+        myJournal = new MyJournal("Minou's journal");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runJournal();
@@ -141,24 +141,20 @@ public class MyJournalApp {
 
     private void doModifyPerson() {
         System.out.println("\nWhich candidate would you like to modify? (number)");
-        int personNum = input.nextInt();
-        System.out.println("\nHere is " + listOfPerson.get(personNum - 1).getName() + "'s profile:");
-        doPrintProfile();
+        int personNum = input.nextInt() - 1;
+        System.out.println("\nHere is " + listOfPerson.get(personNum).getName() + "'s profile:");
+        Person thisPerson = listOfPerson.get(personNum);
+        thisPerson.printProfile();
+        newPerson = thisPerson;
         inPeronCreation = true;
     }
 
     private void doPrintProfile() {
         System.out.println("\nWhich candidate's  profile would you like to view? (number)");
-        int personNum = input.nextInt();
-        Person thisPerson = listOfPerson.get(personNum - 1);
-//        double successRate = (thisPerson.numOfSuccessfulDatesWithPerson() / thisPerson.numOfDatesWithPerson()) * 100;
-        System.out.println("Here is a summary of " + thisPerson.getName() + ":");
-        System.out.println("Age: " + thisPerson.getAge());
-        System.out.println("Occupation: " + thisPerson.getPersonJob());
-        System.out.println("Lives in: " + thisPerson.getPersonLocation());
-        System.out.println("Points so far: " + thisPerson.getPersonEarnedPoints());
-        System.out.println("Number of dates you have been on: " + thisPerson.numOfDatesWithPerson());
-//        System.out.println("Success rate for dates: " + successRate + "%");
+        int personNum = input.nextInt() - 1;
+        Person thisPerson = listOfPerson.get(personNum);
+        thisPerson.printProfile();
+        newPerson = thisPerson;
     }
 
     private void doAddToDates() {
