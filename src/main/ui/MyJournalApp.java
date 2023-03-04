@@ -133,15 +133,20 @@ public class MyJournalApp {
         }
     }
 
+    // MODIFIES: this, myJournal
+    // EFFECTS: Asks user to pick a candidate (by number) to remove and removes that person from listOfPerson
     private void doRemovePerson() {
         System.out.println("\nWhich candidate would you like to remove? (number)");
         int personNum = input.nextInt() - 1;
         listOfPerson.remove(personNum);
-        //myJournal.remove(personNum);
+        myJournal.remove(personNum);
 
         System.out.println("Candidate " + (personNum + 1) + " was removed successfully.");
     }
 
+    // MODIFIES: this
+    // EFFECTS:  Asks user to pick a candidate (by number) and shows the description of that person on listOfPerson
+    //          and presents inPersonCreation display menu for modification
     private void doModifyPerson() {
         System.out.println("\nWhich candidate would you like to modify? (number)");
         int personNum = input.nextInt() - 1;
@@ -152,6 +157,7 @@ public class MyJournalApp {
         inPeronCreation = true;
     }
 
+    // EFFECTS: Asks user to pick a candidate (by number) and prints the description of that person on listOfPerson
     private void doPrintProfile() {
         System.out.println("\nWhich candidate's  profile would you like to view? (number)");
         int personNum = input.nextInt() - 1;
@@ -160,6 +166,8 @@ public class MyJournalApp {
         newPerson = thisPerson;
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a pro in String format to the listOfPerson
     private void doAddToDates() {
         newDate = new DateEntry(newPerson.getName(), newPerson.numOfDatesWithPerson() + 1);
         newPerson.addDateToListOfDates(newDate);
@@ -179,6 +187,8 @@ public class MyJournalApp {
         System.out.println("\nDate " + newDate.getDateNumber() + " with " + newDate.getDateName() + " is now added!");
     }
 
+    // MODIFIES: newPerosn
+    // EFFECTS: adds a con in String format to the listOfPerson
     private void doAddToCons() {
         System.out.println("\nWhat is a bad trait in this person that you have noticed?");
         String con = input.next();
@@ -186,6 +196,8 @@ public class MyJournalApp {
         newPerson.deductOnePoint();
     }
 
+    // MODIFIES: newPerosn
+    // EFFECTS: adds a pro in String format to the listOfPerson
     private void doAddToPros() {
         System.out.println("\nWhat is a good quality of this person that you have noticed?");
         String pro = input.next();
@@ -193,7 +205,8 @@ public class MyJournalApp {
         newPerson.addOnePoint();
     }
 
-
+    // MODIFIES: this, myJournal
+    // EFFECTS: Creates a new person and adds them to the listOfPerson
     public void doCreatePerson() {
 
         System.out.println("\nWhat is the name of the person you are seeing?");
@@ -211,7 +224,7 @@ public class MyJournalApp {
         System.out.println("\n" + name + " is now added to your list!");
     }
 
-    // EFFECTS: displays menu of options to user
+    // EFFECTS: displays main menu of options to user
     private void mainDisplayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tnp -> create a new person");
@@ -221,6 +234,7 @@ public class MyJournalApp {
         System.out.println("\tq -> quit journaling");
     }
 
+    // EFFECTS: displays menu of options to user once a person is created
     private void personDisplayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t+pro -> Add to the list of this person's positive characteristics.");
@@ -230,6 +244,8 @@ public class MyJournalApp {
         System.out.println("\tq -> quit journaling");
     }
 
+
+    // EFFECTS: displays menu of options to user when in list of people
     private void listOfPersonDisplayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tvu -> View a candidate description and dates you have had with them.");
@@ -240,8 +256,7 @@ public class MyJournalApp {
         System.out.println("\tq -> quit journaling");
     }
 
-    // MODIFIES: this
-    // EFFECTS: prints out the list of persons user is
+    // EFFECTS: prints out the list of persons user is dating
     private void doPrintListOfPeople() {
         int i = 1;
         if (listOfPerson.isEmpty()) {
@@ -255,6 +270,5 @@ public class MyJournalApp {
             inListOfPeople = true;
         }
     }
-
 
 }

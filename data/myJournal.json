@@ -27,13 +27,38 @@
             "cons": []
         },
         {
-            "pros": [],
-            "name": "Rosh",
-            "location": "here",
-            "dates": [],
-            "job": "sth",
-            "age": 30,
-            "points": 0,
+            "pros": [
+                "funny",
+                "nice"
+            ],
+            "name": "gigi",
+            "location": "Toronto",
+            "dates": [
+                {
+                    "dateName": "gigi",
+                    "dateSuccessful": true,
+                    "dateRedFlagEvents": ["lcwjbc;rwljnc"],
+                    "dateNumber": 1,
+                    "dateHighLightEvents": ["kjnd;sckjnw"]
+                },
+                {
+                    "dateName": "gigi",
+                    "dateSuccessful": true,
+                    "dateRedFlagEvents": ["ljhwbrcvlwhjblv"],
+                    "dateNumber": 2,
+                    "dateHighLightEvents": ["lwjcnwjcnbl.jv"]
+                },
+                {
+                    "dateName": "gigi",
+                    "dateSuccessful": true,
+                    "dateRedFlagEvents": ["hcbvwqjblwv"],
+                    "dateNumber": 3,
+                    "dateHighLightEvents": ["kdjcbcwjkbv;"]
+                }
+            ],
+            "job": "Developer",
+            "age": 20,
+            "points": 2,
             "cons": []
         }
     ],

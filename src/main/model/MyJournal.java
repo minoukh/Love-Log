@@ -57,14 +57,17 @@ public class MyJournal implements Writable {
         return jsonArray;
     }
 
+    // MODIFIES: this
+    // EFFECTS: remove person at a given index from the listOfPerson in myJournal
     public void remove(int personNum) {
         int index = 0;
+        ArrayList tempList = new ArrayList();
         for (Person p : listOfPerson) {
-            if (index == personNum) {
-                listOfPerson.remove(p);
-            } else {
-                index++;
+            if (index != personNum) {
+                tempList.add(p);
             }
+            index++;
         }
+        listOfPerson = tempList;
     }
 }

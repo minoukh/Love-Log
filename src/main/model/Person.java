@@ -170,6 +170,7 @@ public class Person implements Writable {
         return json;
     }
 
+    //EFFECTS: prints attributes of a person
     public void printProfile() {
         //double successRate = (this.numOfSuccessfulDatesWithPerson() / this.numOfDatesWithPerson()) * 100;
         System.out.println("Here is a summary of " + this.getName() + ":");
