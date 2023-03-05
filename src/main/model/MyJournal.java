@@ -38,6 +38,7 @@ public class MyJournal implements Writable {
         return listOfPerson.size();
     }
 
+    // EFFECTS: creates a JSON object for the journal
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

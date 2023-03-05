@@ -118,6 +118,35 @@ public class Person implements Writable {
         return count;
     }
 
+    // EFFECTS: creates a JSON object for the Person
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("age", age);
+        json.put("location", personLocation);
+        json.put("job", personJob);
+        json.put("points", personEarnedPoints);
+        json.put("cons", cons);
+        json.put("pros", pros);
+        json.put("dates", datesWeHaveBeenOn);
+        return json;
+    }
+
+    //EFFECTS: prints attributes of a person
+    public void printProfile() {
+        //double successRate = (this.numOfSuccessfulDatesWithPerson() / this.numOfDatesWithPerson()) * 100;
+        System.out.println("Here is a summary of " + this.getName() + ":");
+        System.out.println("Age: " + this.getAge());
+        System.out.println("Occupation: " + this.getPersonJob());
+        System.out.println("Lives in: " + this.getPersonLocation());
+        System.out.println("Some of their good qualities: " + this.getListOfPros());
+        System.out.println("Some of their bad qualities: " + this.getListOfCons());
+        System.out.println("Points so far: " + this.getPersonEarnedPoints());
+        System.out.println("Number of dates you have been on: " + this.numOfDatesWithPerson());
+        //System.out.println("Success rate for dates: " + successRate + "%");
+    }
+
     // getters:
     public String getName() {
         return name;
@@ -156,32 +185,6 @@ public class Person implements Writable {
         personEarnedPoints = newPoint;
     }
 
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", name);
-        json.put("age", age);
-        json.put("location", personLocation);
-        json.put("job", personJob);
-        json.put("points", personEarnedPoints);
-        json.put("cons", cons);
-        json.put("pros", pros);
-        json.put("dates", datesWeHaveBeenOn);
-        return json;
-    }
 
-    //EFFECTS: prints attributes of a person
-    public void printProfile() {
-        //double successRate = (this.numOfSuccessfulDatesWithPerson() / this.numOfDatesWithPerson()) * 100;
-        System.out.println("Here is a summary of " + this.getName() + ":");
-        System.out.println("Age: " + this.getAge());
-        System.out.println("Occupation: " + this.getPersonJob());
-        System.out.println("Lives in: " + this.getPersonLocation());
-        System.out.println("Some of their good qualities: " + this.getListOfPros());
-        System.out.println("Some of their bad qualities: " + this.getListOfCons());
-        System.out.println("Points so far: " + this.getPersonEarnedPoints());
-        System.out.println("Number of dates you have been on: " + this.numOfDatesWithPerson());
-        //System.out.println("Success rate for dates: " + successRate + "%");
-    }
 }
 
