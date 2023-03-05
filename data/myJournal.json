@@ -27,9 +27,20 @@
             "cons": []
         },
         {
+            "pros": [],
+            "name": "Hana",
+            "location": "Van",
+            "dates": [],
+            "job": "nothing",
+            "age": 20,
+            "points": 0,
+            "cons": []
+        },
+        {
             "pros": [
                 "funny",
-                "nice"
+                "nice",
+                "tall"
             ],
             "name": "gigi",
             "location": "Toronto",
@@ -59,17 +70,7 @@
             "job": "Developer",
             "age": 20,
             "points": 2,
-            "cons": []
-        },
-        {
-            "pros": [],
-            "name": "hana",
-            "location": "here",
-            "dates": [],
-            "job": "that",
-            "age": 20,
-            "points": 0,
-            "cons": []
+            "cons": ["lazy"]
         }
     ],
     "name": "Minou's journal"

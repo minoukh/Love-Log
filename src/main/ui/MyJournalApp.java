@@ -87,10 +87,13 @@ public class MyJournalApp {
             inPeronCreation = false;
         } else if (command.equals("+pro")) {
             doAddToPros();
+            inPeronCreation = false;
         } else if (command.equals("+con")) {
             doAddToCons();
+            inPeronCreation = false;
         } else if (command.equals("+date")) {
             doAddToDates();
+            inPeronCreation = false;
         } else if (command.equals("vu")) {
             doPrintProfile();
         } else if (command.equals("mod")) {
@@ -156,6 +159,7 @@ public class MyJournalApp {
         System.out.println(thisPerson.printProfile());
         newPerson = thisPerson;
         inPeronCreation = true;
+        myJournal.remove(personNum);
     }
 
     // EFFECTS: Asks user to pick a candidate (by number) and prints the description of that person on listOfPerson
@@ -172,6 +176,7 @@ public class MyJournalApp {
     private void doAddToDates() {
         newDate = new DateEntry(newPerson.getName(), newPerson.numOfDatesWithPerson() + 1);
         newPerson.addDateToListOfDates(newDate);
+        myJournal.addPerson(newPerson);
 
         System.out.println("\nYou can add some highlights to this date:");
         String highlight = input.next();
@@ -195,6 +200,7 @@ public class MyJournalApp {
         String con = input.next();
         newPerson.addToCons(con);
         newPerson.deductOnePoint();
+        myJournal.addPerson(newPerson);
     }
 
     // MODIFIES: newPerosn
@@ -204,6 +210,7 @@ public class MyJournalApp {
         String pro = input.next();
         newPerson.addToPros(pro);
         newPerson.addOnePoint();
+        myJournal.addPerson(newPerson);
     }
 
     // MODIFIES: this, myJournal
