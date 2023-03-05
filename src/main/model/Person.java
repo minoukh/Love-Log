@@ -12,9 +12,9 @@ public class Person implements Writable {
     private String personLocation;
     private String personJob;
     private int personEarnedPoints;
-    public List<String> cons;
-    public List<String> pros;
-    public List<DateEntry> datesWeHaveBeenOn;
+    private List<String> cons;
+    private List<String> pros;
+    private List<DateEntry> datesWeHaveBeenOn;
 
     /*
      * REQUIRES: name has a non-zero length; age is a positive integer.
@@ -183,6 +183,18 @@ public class Person implements Writable {
     // setters:
     public void setPersonPoints(int newPoint) {
         personEarnedPoints = newPoint;
+    }
+
+    public void setListOfCons(List cons) {
+        this.cons = cons;
+    }
+
+    public void setListOfPros(List pros) {
+        this.pros = pros;
+    }
+
+    public void setDatesWeHaveBeenOn(List datesWeHaveBeenOn) {
+        this.datesWeHaveBeenOn = datesWeHaveBeenOn;
     }
 
 

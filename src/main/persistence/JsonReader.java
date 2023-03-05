@@ -71,9 +71,9 @@ public class JsonReader {
         List pros = (List) jsonObject.getJSONArray("pros").toList();
         List datesWeHaveBeenOn = (List) jsonObject.getJSONArray("dates").toList();
         Person person = new Person(name, age, personLocation, personJob, personEarnedPoints);
-        person.cons = (java.util.List<String>) cons;
-        person.pros = (java.util.List<String>) pros;
-        person.datesWeHaveBeenOn = (java.util.List<DateEntry>) datesWeHaveBeenOn;
+        person.setListOfCons((java.util.List<String>) cons);
+        person.setListOfPros((java.util.List<String>) pros);
+        person.setDatesWeHaveBeenOn((java.util.List<DateEntry>) datesWeHaveBeenOn);
         myJournal.addPerson(person);
     }
 }

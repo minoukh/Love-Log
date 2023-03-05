@@ -60,6 +60,16 @@
             "age": 20,
             "points": 2,
             "cons": []
+        },
+        {
+            "pros": [],
+            "name": "hana",
+            "location": "here",
+            "dates": [],
+            "job": "that",
+            "age": 20,
+            "points": 0,
+            "cons": []
         }
     ],
     "name": "Minou's journal"

@@ -76,6 +76,7 @@ public class MyJournalApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommand(String command) {
         if (command.equals("np")) {
             doCreatePerson();
