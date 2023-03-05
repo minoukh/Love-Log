@@ -153,7 +153,7 @@ public class MyJournalApp {
         int personNum = input.nextInt() - 1;
         System.out.println("\nHere is " + listOfPerson.get(personNum).getName() + "'s profile:");
         Person thisPerson = listOfPerson.get(personNum);
-        thisPerson.printProfile();
+        System.out.println(thisPerson.printProfile());
         newPerson = thisPerson;
         inPeronCreation = true;
     }
@@ -163,7 +163,7 @@ public class MyJournalApp {
         System.out.println("\nWhich candidate's  profile would you like to view? (number)");
         int personNum = input.nextInt() - 1;
         Person thisPerson = listOfPerson.get(personNum);
-        thisPerson.printProfile();
+        System.out.println(thisPerson.printProfile());
         newPerson = thisPerson;
     }
 

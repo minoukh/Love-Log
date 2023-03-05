@@ -72,7 +72,7 @@ public class PersonTest {
 
 
     @Test
-    void testAddDateToListOfDates(DateEntry date) {
+    void testAddDateToListOfDates() {
         DateEntry testDate1 = new DateEntry("Joe", 1);
         testPerson.addDateToListOfDates(testDate1);
         assertEquals(1, testPerson.numOfDatesWithPerson());
@@ -128,5 +128,9 @@ public class PersonTest {
         assertEquals(2, testPerson.numOfSuccessfulDatesWithPerson());
     }
 
+   @Test
+   void testPrintProfile() {
+        assertEquals("Here is a summary of Joe:\nAge: 20\nOccupation: Student\nLives in: Vancouver\nSome of their good qualities: []\nSome of their bad qualities: []\nPoints so far: 0\nNumber of dates you have been on: 0", testPerson.printProfile());
+    }
 }
 

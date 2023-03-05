@@ -134,16 +134,23 @@ public class Person implements Writable {
     }
 
     //EFFECTS: prints attributes of a person
-    public void printProfile() {
+    public String printProfile() {
         //double successRate = (this.numOfSuccessfulDatesWithPerson() / this.numOfDatesWithPerson()) * 100;
-        System.out.println("Here is a summary of " + this.getName() + ":");
-        System.out.println("Age: " + this.getAge());
-        System.out.println("Occupation: " + this.getPersonJob());
-        System.out.println("Lives in: " + this.getPersonLocation());
-        System.out.println("Some of their good qualities: " + this.getListOfPros());
-        System.out.println("Some of their bad qualities: " + this.getListOfCons());
-        System.out.println("Points so far: " + this.getPersonEarnedPoints());
-        System.out.println("Number of dates you have been on: " + this.numOfDatesWithPerson());
+        return "Here is a summary of " + this.getName() + ":"
+                +
+                "\nAge: " + this.getAge()
+                +
+                "\nOccupation: " + this.getPersonJob()
+                +
+                "\nLives in: " + this.getPersonLocation()
+                +
+                "\nSome of their good qualities: " + this.getListOfPros()
+                +
+                "\nSome of their bad qualities: " + this.getListOfCons()
+                +
+                "\nPoints so far: " + this.getPersonEarnedPoints()
+                +
+                "\nNumber of dates you have been on: " + this.numOfDatesWithPerson();
         //System.out.println("Success rate for dates: " + successRate + "%");
     }
 
