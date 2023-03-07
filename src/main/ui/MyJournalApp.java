@@ -87,13 +87,19 @@ public class MyJournalApp {
             inPeronCreation = false;
         } else if (command.equals("+pro")) {
             doAddToPros();
+            doPrintListOfPeople();
             inPeronCreation = false;
+            //inListOfPeople = false;
         } else if (command.equals("+con")) {
             doAddToCons();
+            doPrintListOfPeople();
             inPeronCreation = false;
+            //inListOfPeople = false;
         } else if (command.equals("+date")) {
             doAddToDates();
+            doPrintListOfPeople();
             inPeronCreation = false;
+            //inListOfPeople = false;
         } else if (command.equals("vu")) {
             doPrintProfile();
         } else if (command.equals("mod")) {
@@ -155,7 +161,7 @@ public class MyJournalApp {
         System.out.println("\nWhich candidate would you like to modify? (number)");
         int personNum = input.nextInt() - 1;
         System.out.println("\nHere is " + listOfPerson.get(personNum).getName() + "'s profile:");
-        Person thisPerson = listOfPerson.get(personNum);
+        Person thisPerson = myJournal.getListOfPerson().get(personNum);
         System.out.println(thisPerson.printProfile());
         newPerson = thisPerson;
         inPeronCreation = true;
@@ -201,6 +207,7 @@ public class MyJournalApp {
         newPerson.addToCons(con);
         newPerson.deductOnePoint();
         myJournal.addPerson(newPerson);
+        System.out.println(newPerson.getName() + "'s profie is now updated!");
     }
 
     // MODIFIES: newPerosn
@@ -211,6 +218,7 @@ public class MyJournalApp {
         newPerson.addToPros(pro);
         newPerson.addOnePoint();
         myJournal.addPerson(newPerson);
+        System.out.println(newPerson.getName() + "'s profie is now updated!");
     }
 
     // MODIFIES: this, myJournal
@@ -271,7 +279,7 @@ public class MyJournalApp {
             System.out.println("\nYour list is empty. Would you like to add a new person or load your journal?");
             inListOfPeople = false;
         } else {
-            for (Person p : listOfPerson) {
+            for (Person p : myJournal.getListOfPerson()) {
                 System.out.println("\nCandidate " + i + " : " + p.getName());
                 i++;
             }

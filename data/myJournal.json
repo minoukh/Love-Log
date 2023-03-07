@@ -27,50 +27,30 @@
             "cons": []
         },
         {
-            "pros": [],
-            "name": "Hana",
-            "location": "Van",
+            "pros": [
+                "handsome",
+                "chill"
+            ],
+            "name": "Kia",
+            "location": "Kelowna",
             "dates": [],
-            "job": "nothing",
-            "age": 20,
+            "job": "Eng",
+            "age": 30,
             "points": 0,
-            "cons": []
+            "cons": [
+                "mad",
+                "short"
+            ]
         },
         {
-            "pros": [
-                "funny",
-                "nice",
-                "tall"
-            ],
-            "name": "gigi",
-            "location": "Toronto",
-            "dates": [
-                {
-                    "dateName": "gigi",
-                    "dateSuccessful": true,
-                    "dateRedFlagEvents": ["lcwjbc;rwljnc"],
-                    "dateNumber": 1,
-                    "dateHighLightEvents": ["kjnd;sckjnw"]
-                },
-                {
-                    "dateName": "gigi",
-                    "dateSuccessful": true,
-                    "dateRedFlagEvents": ["ljhwbrcvlwhjblv"],
-                    "dateNumber": 2,
-                    "dateHighLightEvents": ["lwjcnwjcnbl.jv"]
-                },
-                {
-                    "dateName": "gigi",
-                    "dateSuccessful": true,
-                    "dateRedFlagEvents": ["hcbvwqjblwv"],
-                    "dateNumber": 3,
-                    "dateHighLightEvents": ["kdjcbcwjkbv;"]
-                }
-            ],
-            "job": "Developer",
-            "age": 20,
-            "points": 2,
-            "cons": ["lazy"]
+            "pros": ["jooje"],
+            "name": "Jooj",
+            "location": "here",
+            "dates": [],
+            "job": "that",
+            "age": 23,
+            "points": 0,
+            "cons": ["kooche"]
         }
     ],
     "name": "Minou's journal"

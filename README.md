@@ -17,11 +17,14 @@ About Love-Log:
 * As a user, I want to be able to add Qualities to the Person.
 * As a user, I want to be able to remove Qualities and/or add Red Flags.
 * As a user, I want to be able to add Notes to the Dates.
-* As a user, I want to be able to add Reminders for Special Occasion (e.g. Birthdays, date plans, milestones, etc.).
-* As a user, I want to be able to rate a date.
-* As a user, I want to be able to view potential partners rankings. 
+* As a user, I want to be able to view potential partners. 
+* As a user, I want to be able to modify persons on the list.
+* As a user, I want to be able to remove persons from the list.
 * As a user, I want to be able to save my journal to file (if I so choose)
 * As a user, I want to be able to be able to load my journal from file (if I so choose)
 
 
+
+
+*P.S. reference to JsonSerializationDemo Project in persistence package*
 
