@@ -89,17 +89,14 @@ public class MyJournalApp {
             doAddToPros();
             doPrintListOfPeople();
             inPeronCreation = false;
-            //inListOfPeople = false;
         } else if (command.equals("+con")) {
             doAddToCons();
             doPrintListOfPeople();
             inPeronCreation = false;
-            //inListOfPeople = false;
         } else if (command.equals("+date")) {
             doAddToDates();
             doPrintListOfPeople();
             inPeronCreation = false;
-            //inListOfPeople = false;
         } else if (command.equals("vu")) {
             doPrintProfile();
         } else if (command.equals("mod")) {
@@ -172,7 +169,7 @@ public class MyJournalApp {
     private void doPrintProfile() {
         System.out.println("\nWhich candidate's  profile would you like to view? (number)");
         int personNum = input.nextInt() - 1;
-        Person thisPerson = listOfPerson.get(personNum);
+        Person thisPerson = myJournal.getListOfPerson().get(personNum);
         System.out.println(thisPerson.printProfile());
         newPerson = thisPerson;
     }
