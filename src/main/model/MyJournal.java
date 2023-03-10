@@ -71,4 +71,8 @@ public class MyJournal implements Writable {
         }
         listOfPerson = tempList;
     }
+
+    public void setListOfPerson(ArrayList<Person> listOfPerson) {
+        this.listOfPerson = listOfPerson;
+    }
 }

@@ -1,5 +1,7 @@
 package ui;
 
+import model.MyJournal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

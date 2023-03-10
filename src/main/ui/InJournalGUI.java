@@ -1,10 +1,14 @@
 package ui;
 
+import model.MyJournal;
+import model.Person;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InJournalGUI implements ActionListener {
     private JLabel label;
@@ -14,9 +18,12 @@ public class InJournalGUI implements ActionListener {
     private JButton viewLopButton;
     private JButton saveButton;
     private JButton backButton;
-    private MyJournalApp myJournalApp;
+    private MyJournal myJournal;
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public InJournalGUI() {
+        myJournal = new MyJournal("MINOU");
+
         frame = new JFrame();
 
         label = new JLabel("Lets add some people!");
@@ -50,7 +57,6 @@ public class InJournalGUI implements ActionListener {
         frame.pack();
         frame.setVisible(true);
 
-        //myJournalApp = new MyJournalApp();
     }
 
     @Override
@@ -61,13 +67,16 @@ public class InJournalGUI implements ActionListener {
             String location = JOptionPane.showInputDialog("Location:");
             String job = JOptionPane.showInputDialog("Occupation:");
             JOptionPane.showMessageDialog(null, name + " is now added to your list.");
-            //myJournalApp.doCreatePerson();
+            myJournal.addPerson(new Person(name, age, location, job, 0));
             //myJournal.addtoLIst
             //go to person creation mode
             //popup getting name, age, ...
             //display new panel
         }
         if (event.getSource() == viewLopButton) {
+            ArrayList<Person> lop = (ArrayList<Person>) myJournal.getListOfPerson();
+            new LopGUI(lop);
+            frame.setVisible(false);
             //
         }
         if (event.getSource() == saveButton) {
