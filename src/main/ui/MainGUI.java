@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 public class MainGUI implements ActionListener {
+    private MyJournal myJournal;
     private JLabel label;
     private JFrame frame;
     private JPanel mainPanel;
@@ -63,7 +64,8 @@ public class MainGUI implements ActionListener {
             //
         }
         if (event.getSource() == newJournalButton) {
-            new InJournalGUI();
+            myJournal = new MyJournal("MINOU");
+            new InJournalGUI(myJournal);
             frame.setVisible(false);
 
         }

@@ -204,6 +204,9 @@ public class Person implements Writable {
         this.datesWeHaveBeenOn = datesWeHaveBeenOn;
     }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 

@@ -21,8 +21,8 @@ public class InJournalGUI implements ActionListener {
     private MyJournal myJournal;
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public InJournalGUI() {
-        myJournal = new MyJournal("MINOU");
+    public InJournalGUI(MyJournal myJournal) {
+        this.myJournal = myJournal;
 
         frame = new JFrame();
 
@@ -74,8 +74,7 @@ public class InJournalGUI implements ActionListener {
             //display new panel
         }
         if (event.getSource() == viewLopButton) {
-            ArrayList<Person> lop = (ArrayList<Person>) myJournal.getListOfPerson();
-            new LopGUI(lop);
+            new LopGUI(myJournal);
             frame.setVisible(false);
             //
         }
