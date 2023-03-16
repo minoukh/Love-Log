@@ -27,6 +27,10 @@ public class LopGUI implements ActionListener {
     private JLabel label = new JLabel();
     private JSplitPane splitPane = new JSplitPane();
 
+    /**
+     * EFFECTS: Constructor sets up a clickable split pane for list person as well as add date and back button
+     * in a new panel window.
+     */
     public LopGUI(MyJournal myJournal) {
         this.myJournal = myJournal;
         this.candidates = myJournal.getListOfPerson();
@@ -68,6 +72,11 @@ public class LopGUI implements ActionListener {
         lopPanel.add(backButton);
     }
 
+    /**
+     * MODIFIES: this, myJournal
+     * EFFECTS: takes the user to the new/next panel window of the application based on the
+     * action the user performs (new Journal GUI or load from JSON file).
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {

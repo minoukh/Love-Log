@@ -7,13 +7,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Represents application's journal window frame.
  */
 public class InJournalGUI implements ActionListener {
+    private static final String JSON_STORE = "./data/guiJournal.json";
     private JLabel label;
     private JFrame frame;
     private JPanel journalPanel;
@@ -22,6 +30,7 @@ public class InJournalGUI implements ActionListener {
     private JButton saveButton;
     private JButton backButton;
     private MyJournal myJournal;
+    private JsonWriter jsonWriter;
 
     /**
      * EFFECTS: Constructor sets up new person, list of people, save, and back button
@@ -30,6 +39,7 @@ public class InJournalGUI implements ActionListener {
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public InJournalGUI(MyJournal myJournal) {
         this.myJournal = myJournal;
+        jsonWriter = new JsonWriter(JSON_STORE);
 
         frame = new JFrame();
 
@@ -83,7 +93,14 @@ public class InJournalGUI implements ActionListener {
             //
         }
         if (event.getSource() == saveButton) {
-            //
+            try {
+                jsonWriter.open();
+                jsonWriter.write(myJournal);
+                jsonWriter.close();
+                JOptionPane.showMessageDialog(null, "Saved to " + JSON_STORE);
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE);
+            }
         }
         if (event.getSource() == backButton) {
             new MainGUI();

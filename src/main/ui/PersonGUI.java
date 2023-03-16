@@ -25,7 +25,7 @@ public class PersonGUI implements ActionListener {
     private JButton backButton;
 
     /**
-     * EFFECTS: Constructor sets up new person, list of people, save, and back button
+     * EFFECTS: Constructor sets text boxes for person information entry as well as add and back button
      * in a new panel window.
      */
     public PersonGUI(MyJournal myJournal) {
@@ -78,12 +78,6 @@ public class PersonGUI implements ActionListener {
         personPanel.add(addButton);
     }
 
-//    String name = JOptionPane.showInputDialog("Name:");
-//    int age = Integer.parseInt(JOptionPane.showInputDialog("Age:"));
-//    String location = JOptionPane.showInputDialog("Location:");
-//    String job = JOptionPane.showInputDialog("Occupation:");
-//
-
     /**
      * MODIFIES: this, myJournal
      * EFFECTS: takes the user to the new/next panel window of the application based on the
@@ -92,8 +86,9 @@ public class PersonGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == addButton) {
-           JOptionPane.showMessageDialog(null,
-                   nameInput.getText() + " is now added to your list.");
+            JOptionPane.showMessageDialog(null,
+                    nameInput.getText() + " is now added to your list.");
+
             myJournal.addPerson(new Person(nameInput.getText(),
                     Integer.parseInt(ageInput.getText()), placeInput.getText(),
                     jobInput.getText(), 0));

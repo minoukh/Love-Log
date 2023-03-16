@@ -1,28 +1,35 @@
 package ui;
 
 import model.MyJournal;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Represents application's main window frame.
  */
 public class MainGUI implements ActionListener {
+    private static final String JSON_STORE = "./data/guiJournal.json";
     private MyJournal myJournal;
     private JLabel label;
     private JFrame frame;
     private JPanel mainPanel;
     private JButton newJournalButton;
     private JButton loadButton;
+    private JsonReader jsonReader;
+
 
     /**
      * EFFECTS: Constructor sets up load and new journal button and the panel window.
      */
     public MainGUI() {
+        jsonReader = new JsonReader(JSON_STORE);
         frame = new JFrame();
 
         label = new JLabel("Welcome to Love Log!");
@@ -48,6 +55,7 @@ public class MainGUI implements ActionListener {
         frame.pack();
         frame.setVisible(true);
     }
+
     /**
      * MODIFIES: this
      * EFFECTS: creates the next state of the application UI based on the action be performed by the
@@ -56,7 +64,15 @@ public class MainGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == loadButton) {
-            //
+            try {
+                myJournal = jsonReader.read();
+                // listOfPerson = jsonReader.read().getListOfPerson();
+                JOptionPane.showMessageDialog(null, "Loaded journal from " + JSON_STORE);
+                new InJournalGUI(myJournal);
+                frame.setVisible(false);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Unable to read from file: " + JSON_STORE);
+            }
         }
         if (event.getSource() == newJournalButton) {
             myJournal = new MyJournal("MINOU");
