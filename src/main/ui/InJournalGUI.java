@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents application's journal window frame.
+ */
 public class InJournalGUI implements ActionListener {
     private JLabel label;
     private JFrame frame;
@@ -20,6 +23,10 @@ public class InJournalGUI implements ActionListener {
     private JButton backButton;
     private MyJournal myJournal;
 
+    /**
+     * EFFECTS: Constructor sets up new person, list of people, save, and back button
+     * in a new panel window.
+     */
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public InJournalGUI(MyJournal myJournal) {
         this.myJournal = myJournal;
@@ -59,19 +66,16 @@ public class InJournalGUI implements ActionListener {
 
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: takes the user to the new/next panel window of the application based on the
+     * action the user performs (new Journal GUI or load from JSON file).
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == newPersonButton) {
-            String name = JOptionPane.showInputDialog("Name:");
-            int age = Integer.parseInt(JOptionPane.showInputDialog("Age:"));
-            String location = JOptionPane.showInputDialog("Location:");
-            String job = JOptionPane.showInputDialog("Occupation:");
-            JOptionPane.showMessageDialog(null, name + " is now added to your list.");
-            myJournal.addPerson(new Person(name, age, location, job, 0));
-            //myJournal.addtoLIst
-            //go to person creation mode
-            //popup getting name, age, ...
-            //display new panel
+            new PersonGUI(myJournal);
+            frame.setVisible(false);
         }
         if (event.getSource() == viewLopButton) {
             new LopGUI(myJournal);
@@ -82,7 +86,8 @@ public class InJournalGUI implements ActionListener {
             //
         }
         if (event.getSource() == backButton) {
-            //
+            new MainGUI();
+            frame.setVisible(false);
         }
     }
 }

@@ -12,11 +12,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents application's List of persons window frame.
+ */
 public class LopGUI implements ActionListener {
     private MyJournal myJournal;
     private JFrame frame;
     private JPanel lopPanel;
     private JButton backButton;
+    private JButton addDateButton;
     private List<Person> candidates;
     JList<Person> list = new JList<>();
     DefaultListModel<Person> model = new DefaultListModel<>();

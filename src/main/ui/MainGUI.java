@@ -8,30 +8,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
+/**
+ * Represents application's main window frame.
+ */
 public class MainGUI implements ActionListener {
     private MyJournal myJournal;
     private JLabel label;
     private JFrame frame;
     private JPanel mainPanel;
     private JButton newJournalButton;
-    //    private JButton newPersonButton;
-//    private JButton viewLopButton;
-//    private JButton saveButton;
     private JButton loadButton;
 
+    /**
+     * EFFECTS: Constructor sets up load and new journal button and the panel window.
+     */
     public MainGUI() {
         frame = new JFrame();
 
         label = new JLabel("Welcome to Love Log!");
-
-//        newPersonButton = new JButton("Create a New Person");
-//        newPersonButton.addActionListener(this);
-//
-//        viewLopButton = new JButton("View the List of People");
-//        viewLopButton.addActionListener(this);
-//
-//        saveButton = new JButton("Save");
-//        saveButton.addActionListener(this);
 
         loadButton = new JButton("Load from File");
         loadButton.addActionListener(this);
@@ -44,9 +38,6 @@ public class MainGUI implements ActionListener {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         mainPanel.setLayout(new GridLayout(0, 1));
         mainPanel.add(label);
-        //panel.add(newPersonButton);
-        //panel.add(viewLopButton);
-        //panel.add(saveButton);
         mainPanel.add(newJournalButton);
         mainPanel.add(loadButton);
 
@@ -57,7 +48,11 @@ public class MainGUI implements ActionListener {
         frame.pack();
         frame.setVisible(true);
     }
-
+    /**
+     * MODIFIES: this
+     * EFFECTS: creates the next state of the application UI based on the action be performed by the
+     * user (new Journal GUI or load from JSON file).
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == loadButton) {
