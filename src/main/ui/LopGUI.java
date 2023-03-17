@@ -26,6 +26,7 @@ public class LopGUI implements ActionListener {
     DefaultListModel<Person> model = new DefaultListModel<>();
     private JLabel label = new JLabel();
     private JSplitPane splitPane = new JSplitPane();
+    protected Person person;
 
     /**
      * EFFECTS: Constructor sets up a clickable split pane for list person as well as add date and back button
@@ -42,13 +43,15 @@ public class LopGUI implements ActionListener {
         list.getSelectionModel().addListSelectionListener(e -> {
             Person p = list.getSelectedValue();
             label.setText("Name: " + p.getName() + ":::"
-                        + "Age: " + p.getAge() + ":::"
-                        + "Location: " + p.getPersonLocation() + ":::"
-                        + "Job: " + p.getPersonJob());
+                    + "Age: " + p.getAge() + ":::"
+                    + "Location: " + p.getPersonLocation() + ":::"
+                    + "Job: " + p.getPersonJob());
+            person = p;
         });
 
         frame = new JFrame();
-        frame.setSize(400, 400);
+        frame.setLayout(new GridLayout());
+        frame.setBounds(100, 100, 1000, 1000);
 
         lopPanel = new JPanel();
         lopPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -63,9 +66,13 @@ public class LopGUI implements ActionListener {
 
 
         splitPane.setLeftComponent(new JScrollPane(list));
-        splitPane.setSize(2000,2000);
+        splitPane.setSize(2000, 2000);
         lopPanel.add(label);
         splitPane.setRightComponent(lopPanel);
+
+        addDateButton = new JButton("Add Date");
+        addDateButton.addActionListener(this);
+        lopPanel.add(addDateButton);
 
         backButton = new JButton("Back");
         backButton.addActionListener(this);
@@ -81,6 +88,10 @@ public class LopGUI implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {
             new InJournalGUI(myJournal);
+            frame.setVisible(false);
+        }
+        if (event.getSource() == addDateButton) {
+            new InDateGUI(myJournal, person);
             frame.setVisible(false);
         }
     }

@@ -7,7 +7,7 @@ import java.util.*;
 public class DateEntry {
     private final int dateNumber;
     private final String dateName;
-    private Boolean successStatus;
+    private Boolean successful;
     private ArrayList<String> dateHighlightEvents;
     private ArrayList<String> dateRedFlagEvents;
 
@@ -20,13 +20,13 @@ public class DateEntry {
     public DateEntry(String dateName, int dateNumber) {
         this.dateNumber = dateNumber;
         this.dateName = dateName;
-        this.successStatus = false;
+        this.successful = false;
         dateHighlightEvents = new ArrayList<>();
         dateRedFlagEvents = new ArrayList<>();
     }
 
     public Boolean isDateSuccessful() {
-        return successStatus;
+        return successful;
     }
 
     /*
@@ -100,8 +100,8 @@ public class DateEntry {
     }
 
     // setter:
-    public void setSuccessfulness(Boolean successfulness) {
-        this.successStatus = successfulness;
+    public void setSuccessfulness(Boolean successStatus) {
+        this.successful = successStatus;
     }
 }
 
