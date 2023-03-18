@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Represents a date or interaction with the date having a name of associated person,
 // number, successfulness, and a description of highlights and mishaps
-public class DateEntry {
+public class DateEntry implements Writable {
     private final int dateNumber;
     private final String dateName;
     private Boolean successful;
@@ -102,6 +105,23 @@ public class DateEntry {
     // setter:
     public void setSuccessfulness(Boolean successStatus) {
         this.successful = successStatus;
+    }
+
+    // EFFECTS: creates a JSON object for the Person
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", dateName);
+        json.put("num", dateNumber);
+        json.put("highlight", dateHighlightEvents);
+        json.put("red-flag", dateRedFlagEvents);
+        json.put("success", successful);
+        return json;
+    }
+
+    @Override
+    public String toString() {
+        return "Date Number: " + dateNumber;
     }
 }
 

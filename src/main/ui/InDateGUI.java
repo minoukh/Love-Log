@@ -28,6 +28,10 @@ public class InDateGUI implements ActionListener {
     private JRadioButton successButton;
     private JRadioButton failButton;
 
+    /**
+     * EFFECTS: Constructor sets text boxes for date information entry as well as add and back button
+     * in a new panel window.
+     */
     public InDateGUI(MyJournal myJournal, Person person) {
         this.myJournal = myJournal;
         this.person = person;
@@ -38,6 +42,7 @@ public class InDateGUI implements ActionListener {
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
         frame.setVisible(true);
         frame.add(datePanel);
 
@@ -64,6 +69,7 @@ public class InDateGUI implements ActionListener {
         label = new JLabel("Would you go out with him again? ");
         label.setBounds(10, 80, 80, 25);
         datePanel.add(label);
+        datePanel.add(new JLabel(""));
         successButton = new JRadioButton("Yes");
         failButton = new JRadioButton("No");
 
@@ -78,6 +84,12 @@ public class InDateGUI implements ActionListener {
         datePanel.add(addButton);
     }
 
+    /**
+     * MODIFIES: this, person
+     * EFFECTS: Add a date with proper attributes to the person's list of dates. Also
+     * takes the user to the new/next panel window of the application based on the
+     * action the user performs (new Journal GUI or load from JSON file).
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {

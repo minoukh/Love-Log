@@ -4,12 +4,9 @@ import model.MyJournal;
 import model.Person;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +18,7 @@ public class LopGUI implements ActionListener {
     private JPanel lopPanel;
     private JButton backButton;
     private JButton addDateButton;
+    private JButton seeDatesButton;
     private List<Person> candidates;
     JList<Person> list = new JList<>();
     DefaultListModel<Person> model = new DefaultListModel<>();
@@ -70,6 +68,10 @@ public class LopGUI implements ActionListener {
         lopPanel.add(label);
         splitPane.setRightComponent(lopPanel);
 
+        seeDatesButton = new JButton("See Dates");
+        seeDatesButton.addActionListener(this);
+        lopPanel.add(seeDatesButton);
+
         addDateButton = new JButton("Add Date");
         addDateButton.addActionListener(this);
         lopPanel.add(addDateButton);
@@ -92,6 +94,10 @@ public class LopGUI implements ActionListener {
         }
         if (event.getSource() == addDateButton) {
             new InDateGUI(myJournal, person);
+            frame.setVisible(false);
+        }
+        if (event.getSource() == seeDatesButton) {
+            new ListOfDatesGUI(myJournal, person);
             frame.setVisible(false);
         }
     }

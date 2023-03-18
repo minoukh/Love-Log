@@ -31,7 +31,8 @@ public class Person implements Writable {
         this.personJob = job;
         this.cons = new ArrayList<>();
         this.pros = new ArrayList<>();
-        this.datesWeHaveBeenOn = new LinkedList<>();
+        this.datesWeHaveBeenOn = new ArrayList<>();
+        //TODO: changed from linkedList ^^
     }
 
     /*
