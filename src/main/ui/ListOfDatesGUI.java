@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,19 +18,30 @@ public class ListOfDatesGUI implements ActionListener {
     private JFrame frame;
     private JPanel lodPanel;
     private JButton backButton;
-//    private JButton addDateButton;
+    //    private JButton addDateButton;
 //    private JButton seeDatesButton;
     private List<DateEntry> dates;
     JList<DateEntry> list = new JList<>();
     DefaultListModel<DateEntry> model = new DefaultListModel<>();
     private JLabel label = new JLabel();
     private JSplitPane splitPane = new JSplitPane();
+
     public ListOfDatesGUI(MyJournal myJournal, Person person) {
         this.myJournal = myJournal;
         this.person = person;
         this.dates = person.getDatesWeHaveBeenOn();
-        for (DateEntry de : dates) {
-            model.addElement(de);
+        for (HashMap de : dates) {
+            String name = String.valueOf(de.get("dateName"));
+            int num = (int) de.get("dateNum");
+            String highlights = String.valueOf(de.get("dateHighLightEvents"));
+            String redFlags = String.valueOf(de.get("dateRedFlagEvents"));
+            Boolean success = (Boolean) de.get("dateSuccessful");
+
+            DateEntry dateEntry = new DateEntry(name, num);
+            dateEntry.setDateHighlightEvents(highlights);
+            dateEntry.setDateRedFlagEvents(redFlags);
+            dateEntry.setSuccessfulness(success);
+            model.addElement(dateEntry);
         }
 
         list.setModel(model);

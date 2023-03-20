@@ -183,11 +183,11 @@ public class MyJournalApp {
 
         System.out.println("\nYou can add some highlights to this date:");
         String highlight = input.next();
-        newDate.addHighlightEvent(highlight);
+        newDate.setDateHighlightEvents(highlight);
 
         System.out.println("\nYou can add some redflags you noticed to this date:");
         String redFlag = input.next();
-        newDate.addRedFlagEvent(redFlag);
+        newDate.setDateRedFlagEvents(redFlag);
 
         System.out.println("\nWould you go out with this person again? (true/false)");
         Boolean successStatus = input.nextBoolean();

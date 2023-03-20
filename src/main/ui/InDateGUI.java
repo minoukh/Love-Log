@@ -96,17 +96,20 @@ public class InDateGUI implements ActionListener {
             new LopGUI(myJournal);
             frame.setVisible(false);
         }
-        if (event.getSource() == successButton) {
-            dateEntry.setSuccessfulness(true);
-        }
-        if (event.getSource() == failButton) {
-            dateEntry.setSuccessfulness(false);
-        }
+
         if (event.getSource() == addButton) {
             JOptionPane.showMessageDialog(null,
                     "A new date entry is now added to your dates with " + person.getName());
-            dateEntry.addHighlightEvent(highLightInput.getText());
-            dateEntry.addRedFlagEvent(redFlagInput.getText());
+            dateEntry.put("dateName", person.getName());
+            dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
+            dateEntry.put("dateHighLightEvents", highLightInput.getText());
+            dateEntry.put("dateRedFlagEvents", redFlagInput.getText());
+            if (event.getSource() == successButton) {
+                dateEntry.put("dateSuccessful", true);
+            }
+            if (event.getSource() == failButton) {
+                dateEntry.put("dateSuccessful", false);
+            }
 
             person.addDateToListOfDates(dateEntry);
             new LopGUI(myJournal);
