@@ -17,6 +17,8 @@ import java.io.IOException;
 public class MainGUI implements ActionListener {
     private static final String JSON_STORE = "./data/guiJournal.json";
     private MyJournal myJournal;
+    private ImageIcon image;
+    private final JLabel displayField;
     private JLabel label;
     private JFrame frame;
     private JPanel mainPanel;
@@ -31,6 +33,8 @@ public class MainGUI implements ActionListener {
     public MainGUI() {
         jsonReader = new JsonReader(JSON_STORE);
         frame = new JFrame();
+        image = new ImageIcon("./data/loveimg.jpeg");
+        displayField = new JLabel(image);
 
         label = new JLabel("Welcome to Love Log!");
 
@@ -42,8 +46,9 @@ public class MainGUI implements ActionListener {
 
 
         mainPanel = new JPanel();
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 30));
         mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.add(displayField);
         mainPanel.add(label);
         mainPanel.add(newJournalButton);
         mainPanel.add(loadButton);
@@ -52,6 +57,7 @@ public class MainGUI implements ActionListener {
         frame.add(mainPanel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Love Log App");
+        frame.setPreferredSize(new Dimension(300,500));
         frame.pack();
         frame.setVisible(true);
     }

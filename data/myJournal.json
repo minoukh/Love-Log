@@ -28,23 +28,6 @@
         },
         {
             "pros": [
-                "handsome",
-                "chill",
-                "cute"
-            ],
-            "name": "Kia",
-            "location": "Kelowna",
-            "dates": [],
-            "job": "Eng",
-            "age": 30,
-            "points": 1,
-            "cons": [
-                "mad",
-                "short"
-            ]
-        },
-        {
-            "pros": [
                 "jooje",
                 "cute"
             ],
@@ -55,6 +38,23 @@
             "age": 23,
             "points": 1,
             "cons": ["kooche"]
+        },
+        {
+            "pros": [
+                "handsome",
+                "chill",
+                "cute"
+            ],
+            "name": "Kia",
+            "location": "Kelowna",
+            "dates": [{}],
+            "job": "Eng",
+            "age": 30,
+            "points": 1,
+            "cons": [
+                "mad",
+                "short"
+            ]
         }
     ],
     "name": "Minou's journal"

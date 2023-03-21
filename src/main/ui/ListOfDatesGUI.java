@@ -18,8 +18,7 @@ public class ListOfDatesGUI implements ActionListener {
     private JFrame frame;
     private JPanel lodPanel;
     private JButton backButton;
-    //    private JButton addDateButton;
-//    private JButton seeDatesButton;
+    private JButton successfulButton;
     private List<DateEntry> dates;
     JList<DateEntry> list = new JList<>();
     DefaultListModel<DateEntry> model = new DefaultListModel<>();
@@ -52,8 +51,13 @@ public class ListOfDatesGUI implements ActionListener {
                     + "Successful: " + de.isDateSuccessful());
         });
 
+        setUpFramePanelSplitPaneButton();
+    }
+
+    private void setUpFramePanelSplitPaneButton() {
         frame = new JFrame();
         frame.setLayout(new GridLayout());
+        frame.setPreferredSize(new Dimension(400,300));
         frame.setBounds(100, 100, 1000, 1000);
 
         lodPanel = new JPanel();
@@ -73,14 +77,9 @@ public class ListOfDatesGUI implements ActionListener {
         lodPanel.add(label);
         splitPane.setRightComponent(lodPanel);
 
-//        seeDatesButton = new JButton("See Dates");
-//        seeDatesButton.addActionListener(this);
-//        lopPanel.add(seeDatesButton);
-//
-//        addDateButton = new JButton("Add Date");
-//        addDateButton.addActionListener(this);
-//        lopPanel.add(addDateButton);
-
+        successfulButton = new JButton("Successful Only");
+        successfulButton.addActionListener(this);
+        lodPanel.add(successfulButton);
         backButton = new JButton("Back");
         backButton.addActionListener(this);
         lodPanel.add(backButton);
@@ -90,6 +89,10 @@ public class ListOfDatesGUI implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {
             new LopGUI(myJournal);
+            frame.setVisible(false);
+        }
+        if (event.getSource() == successfulButton) {
+            new ListOfDatesGUI(myJournal, person);
             frame.setVisible(false);
         }
     }

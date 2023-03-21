@@ -47,8 +47,39 @@ public class LopGUI implements ActionListener {
             person = p;
         });
 
+        setUpFrameAndPanel();
+
+        setUpSplitPane();
+
+        setUpButtons();
+    }
+
+    private void setUpButtons() {
+        seeDatesButton = new JButton("See Dates");
+        seeDatesButton.addActionListener(this);
+        lopPanel.add(seeDatesButton);
+
+        addDateButton = new JButton("Add Date");
+        addDateButton.addActionListener(this);
+        lopPanel.add(addDateButton);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(this);
+        lopPanel.add(backButton);
+    }
+
+    private void setUpSplitPane() {
+        splitPane.setLeftComponent(new JScrollPane(list));
+        splitPane.setDividerLocation(100);
+        splitPane.setSize(2000, 2000);
+        lopPanel.add(label);
+        splitPane.setRightComponent(lopPanel);
+    }
+
+    private void setUpFrameAndPanel() {
         frame = new JFrame();
         frame.setLayout(new GridLayout());
+        frame.setPreferredSize(new Dimension(400,300));
         frame.setBounds(100, 100, 1000, 1000);
 
         lopPanel = new JPanel();
@@ -61,24 +92,6 @@ public class LopGUI implements ActionListener {
         frame.setTitle("Love Log App");
         frame.pack();
         frame.setVisible(true);
-
-
-        splitPane.setLeftComponent(new JScrollPane(list));
-        splitPane.setSize(2000, 2000);
-        lopPanel.add(label);
-        splitPane.setRightComponent(lopPanel);
-
-        seeDatesButton = new JButton("See Dates");
-        seeDatesButton.addActionListener(this);
-        lopPanel.add(seeDatesButton);
-
-        addDateButton = new JButton("Add Date");
-        addDateButton.addActionListener(this);
-        lopPanel.add(addDateButton);
-
-        backButton = new JButton("Back");
-        backButton.addActionListener(this);
-        lopPanel.add(backButton);
     }
 
     /**
