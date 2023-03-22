@@ -44,9 +44,19 @@ public class InDateGUI implements ActionListener {
         backButton = new JButton("Back");
         backButton.addActionListener(this);
 
-        setUpLabelAndTextField("Highlights: ", 20, highLightInput);
+        label = new JLabel("Highlights: ");
+        label.setBounds(10, 20, 80, 25);
+        datePanel.add(label);
+        highLightInput = new JTextField();
+        highLightInput.setBounds(100, 20, 165, 25);
+        datePanel.add(highLightInput);
 
-        setUpLabelAndTextField("Red-Flags: ", 50, redFlagInput);
+        label = new JLabel("Red-Flags: ");
+        label.setBounds(10, 50, 80, 25);
+        datePanel.add(label);
+        redFlagInput = new JTextField();
+        redFlagInput.setBounds(100, 50, 165, 25);
+        datePanel.add(redFlagInput);
 
         setUpSuccessRadioButton();
 
@@ -70,14 +80,6 @@ public class InDateGUI implements ActionListener {
         failButton = new JRadioButton("No");
     }
 
-    private void setUpLabelAndTextField(String text, int y, JTextField highLightInput) {
-        label = new JLabel(text);
-        label.setBounds(10, y, 80, 25);
-        datePanel.add(label);
-        highLightInput = new JTextField();
-        highLightInput.setBounds(100, y, 165, 25);
-        datePanel.add(highLightInput);
-    }
 
     private void setUpFrame() {
         frame = new JFrame();
@@ -109,7 +111,10 @@ public class InDateGUI implements ActionListener {
         if (event.getSource() == addButton) {
             JOptionPane.showMessageDialog(null,
                     "A new date entry is now added to your dates with " + person.getName());
-            putCorrectDateProperties();
+            dateEntry.put("dateName", person.getName());
+            dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
+            dateEntry.put("dateHighLightEvents", highLightInput.getText());
+            dateEntry.put("dateRedFlagEvents", redFlagInput.getText());
 
             if (successButton.isSelected()) {
                 dateEntry.put("dateSuccessful", true);
@@ -128,10 +133,4 @@ public class InDateGUI implements ActionListener {
         }
     }
 
-    private void putCorrectDateProperties() {
-        dateEntry.put("dateName", person.getName());
-        dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
-        dateEntry.put("dateHighLightEvents", highLightInput.getText());
-        dateEntry.put("dateRedFlagEvents", redFlagInput.getText());
-    }
 }

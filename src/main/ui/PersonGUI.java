@@ -34,25 +34,36 @@ public class PersonGUI implements ActionListener {
 
         setUpButtons();
 
-        setUpLabelAndTextFiels("Name: ", 20, nameInput);
+        label = new JLabel("Name: ");
+        label.setBounds(10, 20, 80, 25);
+        personPanel.add(label);
+        nameInput = new JTextField(15);
+        nameInput.setBounds(100, 20, 165, 25);
+        personPanel.add(nameInput);
 
-        setUpLabelAndTextFiels("Age: ", 50, ageInput);
+        label = new JLabel("Age: ");
+        label.setBounds(10, 50, 80, 25);
+        personPanel.add(label);
+        ageInput = new JTextField(15);
+        ageInput.setBounds(100, 50, 165, 25);
+        personPanel.add(ageInput);
 
-        setUpLabelAndTextFiels("Location: ", 80, placeInput);
+        label = new JLabel("Location: ");
+        label.setBounds(10, 80, 80, 25);
+        personPanel.add(label);
+        placeInput = new JTextField(15);
+        placeInput.setBounds(100, 80, 165, 25);
+        personPanel.add(placeInput);
 
-        setUpLabelAndTextFiels("Occupation: ", 110, jobInput);
+        label = new JLabel("Occupation: ");
+        label.setBounds(10, 110, 80, 25);
+        personPanel.add(label);
+        jobInput = new JTextField(15);
+        jobInput.setBounds(100, 110, 165, 25);
+        personPanel.add(jobInput);
 
         personPanel.add(backButton);
         personPanel.add(addButton);
-    }
-
-    private void setUpLabelAndTextFiels(String text, int y, JTextField nameInput) {
-        label = new JLabel(text);
-        label.setBounds(10, y, 80, 25);
-        personPanel.add(label);
-        nameInput = new JTextField(15);
-        nameInput.setBounds(100, y, 165, 25);
-        personPanel.add(nameInput);
     }
 
     private void setUpButtons() {

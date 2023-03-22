@@ -119,11 +119,11 @@ public class DateEntry extends HashMap implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", dateName);
-        json.put("num", dateNumber);
-        json.put("highlight", dateHighlightEvents);
-        json.put("red-flag", dateRedFlagEvents);
-        json.put("success", successful);
+        json.put("dateName", dateName);
+        json.put("dateNum", dateNumber);
+        json.put("dateHighLightEvents", dateHighlightEvents);
+        json.put("dateRedFlagEvents", dateRedFlagEvents);
+        json.put("dateSuccessful", successful);
         return json;
     }
 
