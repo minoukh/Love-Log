@@ -34,36 +34,34 @@ public class PersonGUI implements ActionListener {
 
         setUpButtons();
 
-        label = new JLabel("Name: ");
-        label.setBounds(10, 20, 80, 25);
-        personPanel.add(label);
+        addLabel("Name: ", 20);
         nameInput = new JTextField(15);
         nameInput.setBounds(100, 20, 165, 25);
         personPanel.add(nameInput);
 
-        label = new JLabel("Age: ");
-        label.setBounds(10, 50, 80, 25);
-        personPanel.add(label);
+        addLabel("Age: ", 50);
         ageInput = new JTextField(15);
         ageInput.setBounds(100, 50, 165, 25);
         personPanel.add(ageInput);
 
-        label = new JLabel("Location: ");
-        label.setBounds(10, 80, 80, 25);
-        personPanel.add(label);
+        addLabel("Location: ", 80);
         placeInput = new JTextField(15);
         placeInput.setBounds(100, 80, 165, 25);
         personPanel.add(placeInput);
 
-        label = new JLabel("Occupation: ");
-        label.setBounds(10, 110, 80, 25);
-        personPanel.add(label);
+        addLabel("Occupation: ", 110);
         jobInput = new JTextField(15);
         jobInput.setBounds(100, 110, 165, 25);
         personPanel.add(jobInput);
 
         personPanel.add(backButton);
         personPanel.add(addButton);
+    }
+
+    private void addLabel(String text, int y) {
+        label = new JLabel(text);
+        label.setBounds(10, y, 80, 25);
+        personPanel.add(label);
     }
 
     private void setUpButtons() {

@@ -38,12 +38,6 @@ public class InDateGUI implements ActionListener {
         setUpPanel();
         setUpFrame();
 
-        addButton = new JButton("Add");
-        addButton.addActionListener(this);
-
-        backButton = new JButton("Back");
-        backButton.addActionListener(this);
-
         label = new JLabel("Highlights: ");
         label.setBounds(10, 20, 80, 25);
         datePanel.add(label);
@@ -63,6 +57,16 @@ public class InDateGUI implements ActionListener {
         ButtonGroup successButtons = new ButtonGroup();
         successButtons.add(successButton);
         successButtons.add(failButton);
+
+        setUpButton();
+    }
+
+    private void setUpButton() {
+        addButton = new JButton("Add");
+        addButton.addActionListener(this);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(this);
 
         datePanel.add(successButton);
         datePanel.add(failButton);
@@ -109,8 +113,7 @@ public class InDateGUI implements ActionListener {
         }
 
         if (event.getSource() == addButton) {
-            JOptionPane.showMessageDialog(null,
-                    "A new date entry is now added to your dates with " + person.getName());
+            JOptionPane.showMessageDialog(null, "A new date entry is now added to your dates with " + person.getName());
             dateEntry.put("dateName", person.getName());
             dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
             dateEntry.put("dateHighLightEvents", highLightInput.getText());
