@@ -127,6 +127,9 @@ public class DateEntry extends HashMap implements Writable {
         return json;
     }
 
+    /**
+     * EFFECTS: prints date number when the object is selected/referenced
+     */
     @Override
     public String toString() {
         return "Date Number: " + dateNumber;

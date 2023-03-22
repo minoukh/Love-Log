@@ -58,12 +58,20 @@ public class PersonGUI implements ActionListener {
         personPanel.add(addButton);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up labels for the fields of the GUI
+     */
     private void addLabel(String text, int y) {
         label = new JLabel(text);
         label.setBounds(10, y, 80, 25);
         personPanel.add(label);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up buttons of the GUI
+     */
     private void setUpButtons() {
         addButton = new JButton("Add");
         addButton.addActionListener(this);
@@ -72,6 +80,10 @@ public class PersonGUI implements ActionListener {
         backButton.addActionListener(this);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up frame and panel of the GUI
+     */
     private void setUpFrameAndPanel() {
         personPanel = new JPanel();
         personPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));

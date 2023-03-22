@@ -54,6 +54,10 @@ public class LopGUI implements ActionListener {
         setUpButtons();
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up buttons of the GUI
+     */
     private void setUpButtons() {
         seeDatesButton = new JButton("See Dates");
         seeDatesButton.addActionListener(this);
@@ -68,6 +72,10 @@ public class LopGUI implements ActionListener {
         lopPanel.add(backButton);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up SplitPane of the GUI
+     */
     private void setUpSplitPane() {
         splitPane.setLeftComponent(new JScrollPane(list));
         splitPane.setDividerLocation(100);
@@ -76,6 +84,10 @@ public class LopGUI implements ActionListener {
         splitPane.setRightComponent(lopPanel);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up Frame and Panel of the GUI
+     */
     private void setUpFrameAndPanel() {
         frame = new JFrame();
         frame.setLayout(new GridLayout());

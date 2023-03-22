@@ -21,7 +21,6 @@ public class ListOfDatesGUI implements ActionListener {
     private JFrame frame;
     private JPanel lodPanel;
     private JButton backButton;
-    private JButton successfulButton;
     private List<DateEntry> dates;
     JList<DateEntry> list = new JList<>();
     DefaultListModel<DateEntry> model = new DefaultListModel<>();
@@ -62,6 +61,7 @@ public class ListOfDatesGUI implements ActionListener {
     }
 
     /**
+     * MODIFIES: this
      * EFFECTS: sets up details (dimensions, layout, etc.)  of the frame, panel, and split pane
      */
     private void setUpFramePanelSplitPaneButton() {
@@ -87,9 +87,6 @@ public class ListOfDatesGUI implements ActionListener {
         lodPanel.add(label);
         splitPane.setRightComponent(lodPanel);
 
-        successfulButton = new JButton("Successful Only");
-        successfulButton.addActionListener(this);
-        lodPanel.add(successfulButton);
         backButton = new JButton("Back");
         backButton.addActionListener(this);
         lodPanel.add(backButton);
@@ -104,10 +101,6 @@ public class ListOfDatesGUI implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {
             new LopGUI(myJournal);
-            frame.setVisible(false);
-        }
-        if (event.getSource() == successfulButton) {
-            new ListOfDatesGUI(myJournal, person);
             frame.setVisible(false);
         }
     }

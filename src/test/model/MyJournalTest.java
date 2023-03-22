@@ -50,4 +50,13 @@ public class MyJournalTest {
         assertEquals(1, testJournal.numPersonsDating());
         assertEquals("Tor", testJournal.getListOfPerson().get(0).getPersonLocation());
     }
+
+    @Test
+    void testSetListOfPerson() {
+        ArrayList list = new ArrayList<Person>();
+        list.add(jack);
+        list.add(joe);
+        testJournal.setListOfPerson(list);
+        assertEquals(2, testJournal.numPersonsDating());
+    }
 }

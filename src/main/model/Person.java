@@ -205,6 +205,9 @@ public class Person implements Writable {
         this.datesWeHaveBeenOn = datesWeHaveBeenOn;
     }
 
+    /**
+     * EFFECTS: prints date number when the object is selected/referenced
+     */
     @Override
     public String toString() {
         return name;
