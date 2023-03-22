@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Represents application's List of Dates for a person object window.
+ */
 public class ListOfDatesGUI implements ActionListener {
     private MyJournal myJournal;
     private Person person;
@@ -25,6 +28,10 @@ public class ListOfDatesGUI implements ActionListener {
     private JLabel label = new JLabel();
     private JSplitPane splitPane = new JSplitPane();
 
+    /**
+     * EFFECTS: Constructor sets up the split pane representing dates with the person, numbered on the left
+     * while date descriptions appear on the wight; back button is set up too
+     */
     public ListOfDatesGUI(MyJournal myJournal, Person person) {
         this.myJournal = myJournal;
         this.person = person;
@@ -54,6 +61,9 @@ public class ListOfDatesGUI implements ActionListener {
         setUpFramePanelSplitPaneButton();
     }
 
+    /**
+     * EFFECTS: sets up details (dimensions, layout, etc.)  of the frame, panel, and split pane
+     */
     private void setUpFramePanelSplitPaneButton() {
         frame = new JFrame();
         frame.setLayout(new GridLayout());
@@ -85,6 +95,11 @@ public class ListOfDatesGUI implements ActionListener {
         lodPanel.add(backButton);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: creates the next state of the application UI based on the action be performed by the
+     * user (new Journal GUI or load from JSON file).
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == backButton) {
