@@ -1,0 +1,61 @@
+{
+    "persons": [
+        {
+            "pros": ["nice"],
+            "name": "kiana",
+            "location": "earth",
+            "dates": [],
+            "job": "student",
+            "age": 20,
+            "points": 0,
+            "cons": ["fun"]
+        },
+        {
+            "pros": [],
+            "name": "george",
+            "location": "student",
+            "dates": [{
+                "dateName": "george",
+                "dateSuccessful": true,
+                "dateRedFlagEvents": ["jksndfcjkdsnj"],
+                "dateNumber": 1,
+                "dateHighLightEvents": ["kjslfjsdfkj"]
+            }],
+            "job": "nothing",
+            "age": 23,
+            "points": 0,
+            "cons": []
+        },
+        {
+            "pros": [
+                "jooje",
+                "cute"
+            ],
+            "name": "Jooj",
+            "location": "here",
+            "dates": [],
+            "job": "that",
+            "age": 23,
+            "points": 1,
+            "cons": ["kooche"]
+        },
+        {
+            "pros": [
+                "handsome",
+                "chill",
+                "cute"
+            ],
+            "name": "Kia",
+            "location": "Kelowna",
+            "dates": [{}],
+            "job": "Eng",
+            "age": 30,
+            "points": 1,
+            "cons": [
+                "mad",
+                "short"
+            ]
+        }
+    ],
+    "name": "Minou's journal"
+}

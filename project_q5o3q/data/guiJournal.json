@@ -1,0 +1,27 @@
+{
+    "persons": [{
+        "pros": [],
+        "name": "May",
+        "location": "Van",
+        "dates": [
+            {
+                "dateName": "May",
+                "dateRedFlagEvents": "n/a",
+                "dateNum": 1,
+                "dateHighLightEvents": "Nice, Kind, Paid for self"
+            },
+            {
+                "dateName": "May",
+                "dateSuccessful": true,
+                "dateRedFlagEvents": "Doesnt like dogs",
+                "dateNum": 2,
+                "dateHighLightEvents": "Went for a walk"
+            }
+        ],
+        "job": "Student",
+        "age": 20,
+        "points": 0,
+        "cons": []
+    }],
+    "name": "MINOU"
+}
