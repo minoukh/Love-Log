@@ -19,12 +19,14 @@ public class LopGUI implements ActionListener {
     private JButton backButton;
     private JButton addDateButton;
     private JButton seeDatesButton;
+    private JButton removePersonButton;
     private List<Person> candidates;
     JList<Person> list = new JList<>();
     DefaultListModel<Person> model = new DefaultListModel<>();
     private JLabel label = new JLabel();
     private JSplitPane splitPane = new JSplitPane();
     protected Person person;
+
 
     /**
      * EFFECTS: Constructor sets up a clickable split pane for list person as well as add date and back button
@@ -66,6 +68,10 @@ public class LopGUI implements ActionListener {
         addDateButton = new JButton("Add Date");
         addDateButton.addActionListener(this);
         lopPanel.add(addDateButton);
+
+        removePersonButton = new JButton("Remove Candidate");
+        removePersonButton.addActionListener(this);
+        lopPanel.add(removePersonButton);
 
         backButton = new JButton("Back");
         backButton.addActionListener(this);
@@ -123,6 +129,11 @@ public class LopGUI implements ActionListener {
         }
         if (event.getSource() == seeDatesButton) {
             new ListOfDatesGUI(myJournal, person);
+            frame.setVisible(false);
+        }
+        if (event.getSource() == removePersonButton) {
+            myJournal.getListOfPerson().remove(person);
+            new LopGUI(myJournal);
             frame.setVisible(false);
         }
     }
