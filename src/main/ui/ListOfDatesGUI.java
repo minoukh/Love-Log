@@ -52,9 +52,9 @@ public class ListOfDatesGUI implements ActionListener {
         list.setModel(model);
         list.getSelectionModel().addListSelectionListener(e -> {
             DateEntry de = list.getSelectedValue();
-            label.setText("Highlights: " + de.getDateHighLightEvents() + ":::"
-                    + "Red-Flags: " + de.getDateRedFlagEvents() + ":::"
-                    + "Successful: " + de.isDateSuccessful());
+            label.setText("<html> Highlights: " + de.getDateHighLightEvents()
+                    + "<br>Red-Flags: " + de.getDateRedFlagEvents()
+                    + "<br>Successful: " + de.isDateSuccessful() + "</html>");
         });
 
         setUpFramePanelSplitPaneButton();

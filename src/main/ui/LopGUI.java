@@ -42,10 +42,10 @@ public class LopGUI implements ActionListener {
         list.setModel(model);
         list.getSelectionModel().addListSelectionListener(e -> {
             Person p = list.getSelectedValue();
-            label.setText("Name: " + p.getName() + ":::"
-                    + "Age: " + p.getAge() + ":::"
-                    + "Location: " + p.getPersonLocation() + ":::"
-                    + "Job: " + p.getPersonJob());
+            label.setText("<html>Name: " + p.getName()
+                    + "<br>Age: " + p.getAge()
+                    + "<br>Location: " + p.getPersonLocation()
+                    + "<br>Job: " + p.getPersonJob() + "</html>");
             person = p;
         });
 
@@ -97,8 +97,7 @@ public class LopGUI implements ActionListener {
     private void setUpFrameAndPanel() {
         frame = new JFrame();
         frame.setLayout(new GridLayout());
-        frame.setPreferredSize(new Dimension(400,300));
-        frame.setBounds(100, 100, 1000, 1000);
+        frame.setPreferredSize(new Dimension(400,400));
 
         lopPanel = new JPanel();
         lopPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
