@@ -72,6 +72,8 @@ public class MyJournal implements Writable {
         listOfPerson = tempList;
     }
 
+    // MODIFIES: this
+    // EFFECTS: passes in a list of people into the journal
     public void setListOfPerson(ArrayList<Person> listOfPerson) {
         this.listOfPerson = listOfPerson;
     }

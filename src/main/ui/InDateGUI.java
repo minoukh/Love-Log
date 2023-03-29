@@ -61,6 +61,10 @@ public class InDateGUI implements ActionListener {
         setUpButton();
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up buttons for the panel
+     */
     private void setUpButton() {
         addButton = new JButton("Add");
         addButton.addActionListener(this);
@@ -75,6 +79,10 @@ public class InDateGUI implements ActionListener {
         datePanel.add(addButton);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: creates and sets up radio buttons and for the panel
+     */
     private void setUpSuccessRadioButton() {
         label = new JLabel("Would you go out with him again? ");
         label.setBounds(10, 80, 80, 25);
@@ -84,7 +92,10 @@ public class InDateGUI implements ActionListener {
         failButton = new JRadioButton("No");
     }
 
-
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up the dimensions, visibility, and default close of the frame and adds it to the panel
+     */
     private void setUpFrame() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,6 +104,10 @@ public class InDateGUI implements ActionListener {
         frame.add(datePanel);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up the borders and layout of the panel
+     */
     private void setUpPanel() {
         datePanel = new JPanel();
         datePanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
