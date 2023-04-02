@@ -1,6 +1,7 @@
 package ui;
 
 import model.DateEntry;
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Represents application's List of Dates for a person object window.
  */
-public class ListOfDatesGUI implements ActionListener {
+public class ListOfDatesGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private Person person;
     private JFrame frame;
@@ -65,7 +66,7 @@ public class ListOfDatesGUI implements ActionListener {
      * EFFECTS: sets up details (dimensions, layout, etc.)  of the frame, panel, and split pane
      */
     private void setUpFramePanelSplitPaneButton() {
-        frame = new JFrame();
+        frame = new JFrame("Love Log App");
         frame.setLayout(new GridLayout());
         frame.setPreferredSize(new Dimension(400,300));
         frame.setBounds(100, 100, 1000, 1000);
@@ -75,18 +76,32 @@ public class ListOfDatesGUI implements ActionListener {
         lodPanel.setLayout(new GridLayout(0, 1));
 
         frame.add(lodPanel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.add(splitPane);
-        frame.setTitle("Love Log App");
         frame.pack();
         frame.setVisible(true);
 
 
         splitPane.setLeftComponent(new JScrollPane(list));
-        splitPane.setSize(2000, 2000);
+//        splitPane.setSize(2000, 2000);
         lodPanel.add(label);
         splitPane.setRightComponent(lodPanel);
 
+        addBackButton();
+    }
+
+    /**
+     * MODIFIES: this
+     * EFFECTS: creates a back button and adds to GUI
+     */
+    private void addBackButton() {
         backButton = new JButton("Back");
         backButton.addActionListener(this);
         lodPanel.add(backButton);

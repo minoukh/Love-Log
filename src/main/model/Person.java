@@ -32,7 +32,6 @@ public class Person implements Writable {
         this.cons = new ArrayList<>();
         this.pros = new ArrayList<>();
         this.datesWeHaveBeenOn = new ArrayList<>();
-        //TODO: changed from linkedList ^^
     }
 
     /*
@@ -77,6 +76,7 @@ public class Person implements Writable {
      */
     public void addDateToListOfDates(DateEntry date) {
         datesWeHaveBeenOn.add(date);
+        EventLog.getInstance().logEvent(new Event("New date added for: " +  date.getDateName()));
     }
 
 

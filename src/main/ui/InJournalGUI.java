@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -20,7 +21,7 @@ import java.io.IOException;
 /**
  * Represents application's journal window frame.
  */
-public class InJournalGUI implements ActionListener {
+public class InJournalGUI extends LogPrinter implements ActionListener {
     private static final String JSON_STORE = "./data/guiJournal.json";
     private JLabel label;
     private JFrame frame;
@@ -76,7 +77,14 @@ public class InJournalGUI implements ActionListener {
 
 
         frame.add(journalPanel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.setTitle("Love Log App");
         frame.pack();
         frame.setVisible(true);

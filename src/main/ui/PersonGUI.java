@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 /**
  * Represents application's person creation window frame.
  */
-public class PersonGUI implements ActionListener {
+public class PersonGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private JFrame frame;
     private JLabel label;
@@ -91,7 +92,14 @@ public class PersonGUI implements ActionListener {
 
         frame = new JFrame();
         frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.setVisible(true);
         frame.add(personPanel);
     }

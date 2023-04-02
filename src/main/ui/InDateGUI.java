@@ -1,6 +1,7 @@
 package ui;
 
 import model.DateEntry;
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * Represents application's Date creation for a persons window frame.
  */
-public class InDateGUI implements ActionListener {
+public class InDateGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private Person person;
     private DateEntry dateEntry;
@@ -98,7 +99,16 @@ public class InDateGUI implements ActionListener {
      */
     private void setUpFrame() {
         frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
+
         frame.setSize(500, 500);
         frame.setVisible(true);
         frame.add(datePanel);

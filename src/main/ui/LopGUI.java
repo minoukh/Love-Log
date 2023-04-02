@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Represents application's List of persons window frame.
  */
-public class LopGUI implements ActionListener {
+public class LopGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private JFrame frame;
     private JPanel lopPanel;
@@ -104,7 +105,14 @@ public class LopGUI implements ActionListener {
         lopPanel.setLayout(new GridLayout(0, 1));
 
         frame.add(lopPanel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.add(splitPane);
         frame.setTitle("Love Log App");
         frame.pack();
