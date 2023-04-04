@@ -1,5 +1,6 @@
 package ui;
 
+import model.Event;
 import model.EventLog;
 import model.MyJournal;
 import model.Person;
@@ -140,6 +141,7 @@ public class LopGUI extends LogPrinter implements ActionListener {
         }
         if (event.getSource() == removePersonButton) {
             myJournal.getListOfPerson().remove(person);
+            EventLog.getInstance().logEvent(new Event("Person removed: " +  person.getName()));
             new LopGUI(myJournal);
             frame.setVisible(false);
         }

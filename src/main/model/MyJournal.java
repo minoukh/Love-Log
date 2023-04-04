@@ -72,7 +72,6 @@ public class MyJournal implements Writable {
             index++;
         }
         listOfPerson = tempList;
-        EventLog.getInstance().logEvent(new Event("Person removed at index: " +  personNum));
     }
 
     // MODIFIES: this

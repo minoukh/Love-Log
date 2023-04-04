@@ -39,3 +39,34 @@ with this person, 'See Dates' you have been on so far, or 'Remove Person'.
 - You can save the state of my application by navigating to the 'InJournal Gui' from whichever GUI you are in and choosing 
 'Save' button.
 - You can reload the state of my application by choosing the 'Load from File' button upon running the application (Main GUI)
+
+# Phase 4: Task 2
+Upon running the journal you can start a new journal, add persons (3 in this instance), add dates to each person, remove
+a person if you wish and once user quits the program (closes application) the events will be printed to console. Sample:
+
+    "Tue Apr 04 07:22:14 PDT 2023
+    New Journal created.
+
+    Tue Apr 04 07:22:32 PDT 2023
+    Person added: Jack
+
+    Tue Apr 04 07:22:47 PDT 2023
+    Person added: Joe
+
+    Tue Apr 04 07:23:07 PDT 2023
+    Person added: Peter
+
+    Tue Apr 04 07:23:26 PDT 2023
+    New date added for: Jack
+
+    Tue Apr 04 07:23:59 PDT 2023
+    New date added for: Jack
+
+    Tue Apr 04 07:24:33 PDT 2023
+    New date added for: Jack
+
+    Tue Apr 04 07:24:47 PDT 2023
+    Person removed: Peter"
+
+
+
