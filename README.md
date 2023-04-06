@@ -69,4 +69,22 @@ a person if you wish and once user quits the program (closes application) the ev
     Person removed: Peter"
 
 # Phase 4: Task 3"
+After reviewing my code and reflecting on the UML diagram I realized there are segments of the code duplicated across 
+different parts of my app this can make the codebase harder to maintain and lead to inconsistencies in the future. 
+My UML diagram made me realize that there could be more efficient ways for my GUI classes to maintain associations with 
+my model classes (i.e. MyJournal, Person, DateEntry). This level of coupling might be problematic. Implementing 
+design patterns such as the Singleton Pattern for my persistence package classes (as JSON reader and writer are only 
+been instantiated once) as well as refactoring to remove duplication can improve code quality and make it easier to modify 
+and extend the application.
+While working on Phase 3 I improvised some light refactoring by extracting the lines of code setting up GUI frame into 
+its own method, similarly extracting panel set-up code into another method, and JButtons set-up and addition as another. 
+However, this was done within each GUI class. Having noticed the similarity between each of these methods across the GUI 
+classes, I could have created an abstract superclass with the set-up methods declared and implemented once. This way my GUI
+classes could extend and inherit the general methods and override them whenever necessary (*I am aware that this change entails other 
+modifications to the code specially with extending LogPrinter by GUI classes, as only one superclass can be extended*). 
+Moreover, I could refactor similar methods such as *doAddToCons* and *doAddToPros* in my ui.MyJournalApp (console App) 
+into one method, with different parameters (cons vs. pros) as they share much similarity. Overall, refactoring is an 
+important part of the software development process. It can help improve the quality and maintainability of code, making 
+it easier to work with in the future.
 
+.
