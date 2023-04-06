@@ -14,7 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="DatingSolutionApp" options="--add-exports jdk.internal.le/jdk.internal.org.jline.reader.impl=ALL-UNNAMED --add-exports jdk.internal.vm.compiler/jdk.internal.vm.compiler.word=ALL-UNNAMED" />
+      <module name="LovLogApp" options="--add-exports jdk.internal.le/jdk.internal.org.jline.reader.impl=ALL-UNNAMED --add-exports jdk.internal.vm.compiler/jdk.internal.vm.compiler.word=ALL-UNNAMED" />
     </option>
   </component>
 </project>

@@ -68,5 +68,5 @@ a person if you wish and once user quits the program (closes application) the ev
     Tue Apr 04 07:24:47 PDT 2023
     Person removed: Peter"
 
-
+# Phase 4: Task 3"
 
