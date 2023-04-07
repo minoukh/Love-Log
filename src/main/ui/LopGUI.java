@@ -140,8 +140,8 @@ public class LopGUI extends LogPrinter implements ActionListener {
             frame.setVisible(false);
         }
         if (event.getSource() == removePersonButton) {
-            myJournal.getListOfPerson().remove(person);
-            EventLog.getInstance().logEvent(new Event("Person removed: " +  person.getName()));
+            //myJournal.getListOfPerson().remove(person);
+            myJournal.remove(list.getAnchorSelectionIndex());
             new LopGUI(myJournal);
             frame.setVisible(false);
         }

@@ -66,7 +66,7 @@ a person if you wish and once user quits the program (closes application) the ev
     New date added for: Jack
 
     Tue Apr 04 07:24:47 PDT 2023
-    Person removed: Peter"
+    Candidate 3 was removed"
 
 # Phase 4: Task 3"
 After reviewing my code and reflecting on the UML diagram I realized there are segments of the code duplicated across 
