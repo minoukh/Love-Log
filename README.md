@@ -72,9 +72,10 @@ a person if you wish and once user quits the program (closes application) the ev
 After reviewing my code and reflecting on the UML diagram I realized there are segments of the code duplicated across 
 different parts of my app this can make the codebase harder to maintain and lead to inconsistencies in the future. 
 My UML diagram made me realize that there could be more efficient ways for my GUI classes to maintain associations with 
-my model classes (i.e. MyJournal, Person, DateEntry). This level of coupling might be problematic. Implementing 
-design patterns such as the Singleton Pattern for my persistence package classes (as JSON reader and writer are only 
-been instantiated once) as well as refactoring to remove duplication can improve code quality and make it easier to modify 
+my model classes (i.e. MyJournal, Person, DateEntry). This level of coupling might be problematic. We could go further 
+and implement designs such that the GUI classes only have associations with MyJournal class and access Person and DateEntry
+through that.Implementing design patterns such as the Singleton Pattern for my persistence package classes (as JSON reader and writer are only 
+been instantiated once) as well as refactoring to remove duplication can also improve code quality and cohesion and make it easier to modify 
 and extend the application.
 
 
