@@ -45,8 +45,15 @@ public class EventTest {
 
 
     @Test
-    public void testHashCodeGeneration() {
-        assertTrue(e.hashCode() <= 13 * d.hashCode() + e.getDescription().hashCode());
+    public void equalObjectsShouldHaveEqualHashCodes() {
+        while (true) {
+            Event e1 = new Event("desc");
+            Event e2 = new Event("desc");
+            if (e1.equals(e2)) {
+                assertEquals(e1.hashCode(), e2.hashCode());
+                break;
+            }
+        }
     }
 
     @Test
