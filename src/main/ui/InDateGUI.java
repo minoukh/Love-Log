@@ -1,6 +1,7 @@
 package ui;
 
 import model.DateEntry;
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * Represents application's Date creation for a persons window frame.
  */
-public class InDateGUI implements ActionListener {
+public class InDateGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private Person person;
     private DateEntry dateEntry;
@@ -38,21 +39,39 @@ public class InDateGUI implements ActionListener {
         setUpPanel();
         setUpFrame();
 
-        addButton = new JButton("Add");
-        addButton.addActionListener(this);
+        label = new JLabel("Highlights: ");
+        label.setBounds(10, 20, 80, 25);
+        datePanel.add(label);
+        highLightInput = new JTextField();
+        highLightInput.setBounds(100, 20, 165, 25);
+        datePanel.add(highLightInput);
 
-        backButton = new JButton("Back");
-        backButton.addActionListener(this);
-
-        setUpLabelAndTextField("Highlights: ", 20, highLightInput);
-
-        setUpLabelAndTextField("Red-Flags: ", 50, redFlagInput);
+        label = new JLabel("Red-Flags: ");
+        label.setBounds(10, 50, 80, 25);
+        datePanel.add(label);
+        redFlagInput = new JTextField();
+        redFlagInput.setBounds(100, 50, 165, 25);
+        datePanel.add(redFlagInput);
 
         setUpSuccessRadioButton();
 
         ButtonGroup successButtons = new ButtonGroup();
         successButtons.add(successButton);
         successButtons.add(failButton);
+
+        setUpButton();
+    }
+
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up buttons for the panel
+     */
+    private void setUpButton() {
+        addButton = new JButton("Add");
+        addButton.addActionListener(this);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(this);
 
         datePanel.add(successButton);
         datePanel.add(failButton);
@@ -61,6 +80,10 @@ public class InDateGUI implements ActionListener {
         datePanel.add(addButton);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: creates and sets up radio buttons and for the panel
+     */
     private void setUpSuccessRadioButton() {
         label = new JLabel("Would you go out with him again? ");
         label.setBounds(10, 80, 80, 25);
@@ -70,23 +93,31 @@ public class InDateGUI implements ActionListener {
         failButton = new JRadioButton("No");
     }
 
-    private void setUpLabelAndTextField(String text, int y, JTextField highLightInput) {
-        label = new JLabel(text);
-        label.setBounds(10, y, 80, 25);
-        datePanel.add(label);
-        highLightInput = new JTextField();
-        highLightInput.setBounds(100, y, 165, 25);
-        datePanel.add(highLightInput);
-    }
-
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up the dimensions, visibility, and default close of the frame and adds it to the panel
+     */
     private void setUpFrame() {
         frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
+
         frame.setSize(500, 500);
         frame.setVisible(true);
         frame.add(datePanel);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up the borders and layout of the panel
+     */
     private void setUpPanel() {
         datePanel = new JPanel();
         datePanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -107,9 +138,11 @@ public class InDateGUI implements ActionListener {
         }
 
         if (event.getSource() == addButton) {
-            JOptionPane.showMessageDialog(null,
-                    "A new date entry is now added to your dates with " + person.getName());
-            putCorrectDateProperties();
+            JOptionPane.showMessageDialog(null, "A new date entry is now added to your dates with " + person.getName());
+            dateEntry.put("dateName", person.getName());
+            dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
+            dateEntry.put("dateHighLightEvents", highLightInput.getText());
+            dateEntry.put("dateRedFlagEvents", redFlagInput.getText());
 
             if (successButton.isSelected()) {
                 dateEntry.put("dateSuccessful", true);
@@ -128,10 +161,4 @@ public class InDateGUI implements ActionListener {
         }
     }
 
-    private void putCorrectDateProperties() {
-        dateEntry.put("dateName", person.getName());
-        dateEntry.put("dateNum", person.numOfDatesWithPerson() + 1);
-        dateEntry.put("dateHighLightEvents", highLightInput.getText());
-        dateEntry.put("dateRedFlagEvents", redFlagInput.getText());
-    }
 }

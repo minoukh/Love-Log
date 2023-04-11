@@ -33,7 +33,13 @@
             ],
             "name": "Jooj",
             "location": "here",
-            "dates": [],
+            "dates": [{
+                "dateName": "Jooj",
+                "dateSuccessful": false,
+                "dateRedFlagEvents": ["not cool"],
+                "dateNumber": 1,
+                "dateHighLightEvents": ["Coooool"]
+            }],
             "job": "that",
             "age": 23,
             "points": 1,

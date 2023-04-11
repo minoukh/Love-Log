@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -14,7 +15,7 @@ import java.io.IOException;
 /**
  * Represents application's main window frame.
  */
-public class MainGUI implements ActionListener {
+public class MainGUI extends LogPrinter implements ActionListener {
     private static final String JSON_STORE = "./data/guiJournal.json";
     private MyJournal myJournal;
     private ImageIcon image;
@@ -30,6 +31,7 @@ public class MainGUI implements ActionListener {
     /**
      * EFFECTS: Constructor sets up load and new journal button and the panel window.
      */
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public MainGUI() {
         jsonReader = new JsonReader(JSON_STORE);
         frame = new JFrame();
@@ -55,7 +57,14 @@ public class MainGUI implements ActionListener {
 
 
         frame.add(mainPanel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.setTitle("Love Log App");
         frame.setPreferredSize(new Dimension(300,500));
         frame.pack();

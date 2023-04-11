@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -20,7 +21,7 @@ import java.io.IOException;
 /**
  * Represents application's journal window frame.
  */
-public class InJournalGUI implements ActionListener {
+public class InJournalGUI extends LogPrinter implements ActionListener {
     private static final String JSON_STORE = "./data/guiJournal.json";
     private JLabel label;
     private JFrame frame;
@@ -36,7 +37,6 @@ public class InJournalGUI implements ActionListener {
      * EFFECTS: Constructor sets up new person, list of people, save, and back button
      * in a new panel window.
      */
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public InJournalGUI(MyJournal myJournal) {
         this.myJournal = myJournal;
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -57,6 +57,15 @@ public class InJournalGUI implements ActionListener {
         backButton = new JButton("Go Back");
         backButton.addActionListener(this);
 
+        setUpFrameAndPanel();
+
+    }
+
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up details (dimensions, layout, etc.)  of the frame and panel
+     */
+    private void setUpFrameAndPanel() {
         journalPanel = new JPanel();
         journalPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         journalPanel.setLayout(new GridLayout(0, 1));
@@ -67,13 +76,18 @@ public class InJournalGUI implements ActionListener {
         journalPanel.add(backButton);
 
 
-
         frame.add(journalPanel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.setTitle("Love Log App");
         frame.pack();
         frame.setVisible(true);
-
     }
 
     /**

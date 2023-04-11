@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DatingSolutionApp.iml" filepath="$PROJECT_DIR$/DatingSolutionApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LovLogApp.iml" filepath="$PROJECT_DIR$/LovLogApp.iml" />
     </modules>
   </component>
 </project>

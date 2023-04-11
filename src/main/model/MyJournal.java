@@ -16,6 +16,7 @@ public class MyJournal implements Writable {
     public MyJournal(String name) {
         this.name = name;
         listOfPerson = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("New Journal created."));
     }
 
     public String getName() {
@@ -26,6 +27,7 @@ public class MyJournal implements Writable {
     // EFFECTS: adds person to this journal
     public void addPerson(Person person) {
         listOfPerson.add(person);
+        EventLog.getInstance().logEvent(new Event("Person added: " + person.getName()));
     }
 
     // EFFECTS: returns a list of persons user is dating in this journal
@@ -70,8 +72,12 @@ public class MyJournal implements Writable {
             index++;
         }
         listOfPerson = tempList;
+        int num = personNum + 1;
+        EventLog.getInstance().logEvent(new Event("Candidate " + num + " was removed"));
     }
 
+    // MODIFIES: this
+    // EFFECTS: passes in a list of people into the journal
     public void setListOfPerson(ArrayList<Person> listOfPerson) {
         this.listOfPerson = listOfPerson;
     }

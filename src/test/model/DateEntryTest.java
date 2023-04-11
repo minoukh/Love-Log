@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +33,32 @@ class DateEntryTest {
     void isDateSuccessful() {
         testDate.setSuccessfulness(true);
         assertTrue(testDate.isDateSuccessful());
+    }
+
+    @Test
+    void testSetFields() {
+        testDate.setDateRedFlagEvents("bad bad");
+        testDate.setDateHighlightEvents("good good");
+        assertEquals("bad bad", testDate.getDateRedFlagEvents());
+        assertEquals("good good", testDate.getDateHighLightEvents());
+    }
+
+    @Test
+    void testToString() {
+        assertEquals("Date Number: 1", testDate.toString());
+    }
+
+    @Test
+    void testToJson() {
+        testDate.setDateRedFlagEvents("bad bad");
+        testDate.setDateHighlightEvents("good good");
+        testDate.setSuccessfulness(true);
+        JSONObject jsonObj = testDate.toJson();
+        assertEquals("Jay", jsonObj.get("dateName"));
+        assertEquals(1, jsonObj.get("dateNum"));
+        assertEquals("bad bad", jsonObj.get("dateRedFlagEvents"));
+        assertEquals("good good", jsonObj.get("dateHighLightEvents"));
+        assertEquals(true, jsonObj.get("dateSuccessful"));
     }
 //
 //    @Test

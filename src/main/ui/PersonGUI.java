@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.MyJournal;
 import model.Person;
 
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 /**
  * Represents application's person creation window frame.
  */
-public class PersonGUI implements ActionListener {
+public class PersonGUI extends LogPrinter implements ActionListener {
     private MyJournal myJournal;
     private JFrame frame;
     private JLabel label;
@@ -34,27 +35,44 @@ public class PersonGUI implements ActionListener {
 
         setUpButtons();
 
-        setUpLabelAndTextFiels("Name: ", 20, nameInput);
+        addLabel("Name: ", 20);
+        nameInput = new JTextField(15);
+        nameInput.setBounds(100, 20, 165, 25);
+        personPanel.add(nameInput);
 
-        setUpLabelAndTextFiels("Age: ", 50, ageInput);
+        addLabel("Age: ", 50);
+        ageInput = new JTextField(15);
+        ageInput.setBounds(100, 50, 165, 25);
+        personPanel.add(ageInput);
 
-        setUpLabelAndTextFiels("Location: ", 80, placeInput);
+        addLabel("Location: ", 80);
+        placeInput = new JTextField(15);
+        placeInput.setBounds(100, 80, 165, 25);
+        personPanel.add(placeInput);
 
-        setUpLabelAndTextFiels("Occupation: ", 110, jobInput);
+        addLabel("Occupation: ", 110);
+        jobInput = new JTextField(15);
+        jobInput.setBounds(100, 110, 165, 25);
+        personPanel.add(jobInput);
 
         personPanel.add(backButton);
         personPanel.add(addButton);
     }
 
-    private void setUpLabelAndTextFiels(String text, int y, JTextField nameInput) {
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up labels for the fields of the GUI
+     */
+    private void addLabel(String text, int y) {
         label = new JLabel(text);
         label.setBounds(10, y, 80, 25);
         personPanel.add(label);
-        nameInput = new JTextField(15);
-        nameInput.setBounds(100, y, 165, 25);
-        personPanel.add(nameInput);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up buttons of the GUI
+     */
     private void setUpButtons() {
         addButton = new JButton("Add");
         addButton.addActionListener(this);
@@ -63,6 +81,10 @@ public class PersonGUI implements ActionListener {
         backButton.addActionListener(this);
     }
 
+    /**
+     * MODIFIES: this
+     * EFFECTS: sets up frame and panel of the GUI
+     */
     private void setUpFrameAndPanel() {
         personPanel = new JPanel();
         personPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -70,7 +92,14 @@ public class PersonGUI implements ActionListener {
 
         frame = new JFrame();
         frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
         frame.setVisible(true);
         frame.add(personPanel);
     }

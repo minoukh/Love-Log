@@ -32,59 +32,6 @@ public class DateEntry extends HashMap implements Writable {
         return successful;
     }
 
-//    /*
-//     * REQUIRES: string of length >=1
-//     * MODIFIES: this
-//     * EFFECTS: highlight description is added to dateHighlightEvents
-//     */
-//    public void addHighlightEvent(String description) {
-//        dateHighlightEvents.add(description);
-//    }
-//
-//    /*
-//     * REQUIRES: string of length >=1
-//     * MODIFIES: this
-//     * EFFECTS: red-flag description is added to dateRedFlagEvents
-//     */
-//    public void addRedFlagEvent(String description) {
-//        dateRedFlagEvents.add(description);
-//    }
-//
-////    /*
-//     * REQUIRES: num >= 0
-//     * MODIFIES: this
-//     * EFFECTS: highlight description is removed from dateHighlightEvents
-//     */
-//    public Boolean removeHighlightEvent(int num) {
-//        int index = 1;
-//        for (String desc : dateHighlightEvents) {
-//            if (index == num) {
-//                dateHighlightEvents.remove(desc);
-//                return true;
-//            }
-//            index++;
-//        }
-//        return false;
-//    }
-//
-//
-//    /*
-//     * REQUIRES: num >= 0
-//     * MODIFIES: this
-//     * EFFECTS: highlight description is removed from dateHighlightEvents
-//     */
-//    public Boolean removeRedFlagEvent(int num) {
-//        int index = 1;
-//        for (String desc : dateRedFlagEvents) {
-//            if (index == num) {
-//                dateRedFlagEvents.remove(desc);
-//                return true;
-//            }
-//            index++;
-//        }
-//        return false;
-//    }
-
     // getters:
     public String getDateName() {
         return dateName;
@@ -119,14 +66,17 @@ public class DateEntry extends HashMap implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", dateName);
-        json.put("num", dateNumber);
-        json.put("highlight", dateHighlightEvents);
-        json.put("red-flag", dateRedFlagEvents);
-        json.put("success", successful);
+        json.put("dateName", dateName);
+        json.put("dateNum", dateNumber);
+        json.put("dateHighLightEvents", dateHighlightEvents);
+        json.put("dateRedFlagEvents", dateRedFlagEvents);
+        json.put("dateSuccessful", successful);
         return json;
     }
 
+    /**
+     * EFFECTS: prints date number when the object is selected/referenced
+     */
     @Override
     public String toString() {
         return "Date Number: " + dateNumber;
